@@ -1,7 +1,9 @@
 {
     "name": "WalterWalk",
     "rootNamespace": "WalterWalk",
-    "references": [],
+    "references": [
+        ""
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
