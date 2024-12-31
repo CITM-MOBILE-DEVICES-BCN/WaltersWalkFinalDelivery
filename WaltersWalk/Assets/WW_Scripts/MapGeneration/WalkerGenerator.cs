@@ -13,9 +13,8 @@ public class WalkerCreator : MonoBehaviour
         WALL,
         EMPTY
     }
+	public static WalkerCreator Instance { get; private set; }
 
-    //Variables
-    
     public Tilemap tileMap;
     public RuleTile Floor;
     public RuleTile FloorVertical;
@@ -49,12 +48,13 @@ public class WalkerCreator : MonoBehaviour
 	private int TileCount = default;
     
 	public event Action<Vector3> OnTurnPlaced; //  Notify the PathRetriever of the new turn
-	public event Action<Vector3, Vector2> OnChanceSpawnBuilding; // Notify the BuildingFactory of the chance to spawn
+	public event Action<Vector3, Vector2, Vector3Int> OnChanceSpawnBuilding; // Notify the BuildingFactory of the chance to spawn
+
+	private Queue<List<DestroyableMapTile>> tilesToDestroy;
+	private List<DestroyableMapTile> currentRoad;
 
     void OnEnable()
     {
-
-
         InitializeGrid();
     }
 
@@ -128,9 +128,7 @@ public class WalkerCreator : MonoBehaviour
                     {
 
                     // Chance to spawn a building
-	                    OnChanceSpawnBuilding?.Invoke(curWalker.GlobalPosition(), curWalker._direction);
-                        //BuildingPlacer placer = new BuildingPlacer(curWalker.GlobalPosition());
-                    	//Vector3 size = placer.CreateSize();
+	                    OnChanceSpawnBuilding?.Invoke(curWalker.GlobalPosition(), curWalker._direction, curPos);
                     	
                         tilesSinceRoad++;
                         if (curWalker._direction != Vector2.down)
@@ -143,10 +141,8 @@ public class WalkerCreator : MonoBehaviour
 
                     tilesSinceTurn++; // keep track of how many tiles spawned since last turn
                     TileCount++;
-                    //gridHandler[curPos.x, curPos.y] = Grid.FLOOR;
                     hasCreatedFloor = true;
                 
-
                 if (curWalker._position.y == 1) /* At the bottom end of the map */
                 {
                     end = true; break;
@@ -161,6 +157,7 @@ public class WalkerCreator : MonoBehaviour
             {
 	            if (ChanceToRedirect()) 
 	            { 
+	             	AddRoadToQueue();
 		            tilesSinceTurn = 0; tilesSinceRoad = 0; 
 		            if(OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
 	            }
@@ -177,9 +174,6 @@ public class WalkerCreator : MonoBehaviour
             }
 
         }
-
-        //StartCoroutine(CreateWalls());
-
         yield return null;
     }
 
@@ -254,50 +248,6 @@ public class WalkerCreator : MonoBehaviour
 		return Walkers[0]._position;
 	}
 
-    IEnumerator CreateWalls()
-    {
-        for (int x = 0; x < gridHandler.GetLength(0) - 1; x++)
-        {
-            for (int y = 0; y < gridHandler.GetLength(1) - 1; y++)
-            {
-                if (gridHandler[x, y] == Grid.FLOOR)
-                {
-                    bool hasCreatedWall = false;
-
-                    if (gridHandler[x + 1, y] == Grid.EMPTY)
-                    {
-                        tileMap.SetTile(new Vector3Int(x + 1, y, 0), Wall);
-                        gridHandler[x + 1, y] = Grid.WALL;
-                        hasCreatedWall = true;
-                    }
-                    if (gridHandler[x - 1, y] == Grid.EMPTY)
-                    {
-                        tileMap.SetTile(new Vector3Int(x - 1, y, 0), Wall);
-                        gridHandler[x - 1, y] = Grid.WALL;
-                        hasCreatedWall = true;
-                    }
-                    if (gridHandler[x, y + 1] == Grid.EMPTY)
-                    {
-                        tileMap.SetTile(new Vector3Int(x, y + 1, 0), Wall);
-                        gridHandler[x, y + 1] = Grid.WALL;
-                        hasCreatedWall = true;
-                    }
-                    if (gridHandler[x, y - 1] == Grid.EMPTY)
-                    {
-                        tileMap.SetTile(new Vector3Int(x, y - 1, 0), Wall);
-                        gridHandler[x, y - 1] = Grid.WALL;
-                        hasCreatedWall = true;
-                    }
-
-                    if (hasCreatedWall)
-                    {
-                        yield return new WaitForSeconds(WaitTime);
-                    }
-                }
-            }
-        }
-    }
-
     void DeleteAllChildObjects()
     {
         // Get all child GameObjects of the GameObject
@@ -314,4 +264,39 @@ public class WalkerCreator : MonoBehaviour
         }
     }
 
+
+	private void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			Destroy(gameObject); 
+		}
+	}
+	
+	public void AddDestroyableTile(DestroyableMapTile tile)
+	{
+		if (currentRoad == null){currentRoad = new List<DestroyableMapTile>();}
+		currentRoad.Add(tile);
+	}
+	
+	private void AddRoadToQueue()
+	{
+		if(tilesToDestroy == null){tilesToDestroy = new Queue<List<DestroyableMapTile>>();}
+		tilesToDestroy.Enqueue(new List<DestroyableMapTile> ( currentRoad ) ); // enqueue a new list so that it wont be lost when cleared
+        if (currentRoad == null) { currentRoad = new List<DestroyableMapTile>(); }
+        currentRoad.Clear();
+	}
+	
+	public void DetroyOldRoad() /* called from the Path follower after crossing to the next road */
+	{
+		List<DestroyableMapTile> old =  tilesToDestroy.Dequeue();
+		for(int i = 0; i < old.Count; ++i)
+		{
+			Destroy(old[i].gameObject);
+		}
+	}
 }

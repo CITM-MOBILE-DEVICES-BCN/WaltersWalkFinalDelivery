@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Tilemaps;
+
 
 [System.Serializable]
 public class BuildingInfo
@@ -17,14 +19,19 @@ namespace WalterWalk
 	public class BuildingFactory : MonoBehaviour
 	{
 		public float chanceToBuild = 1f;
-		public float offsetFromCenter = 7f;
+		public float offsetFromCenter = 18f;
+		
+		private Tilemap tileMap;
 
 		public List<BuildingInfo> BuildingCollection = new List<BuildingInfo>();
 		
 		private WalkerCreator walkerCreator;
 
+		public List<DestroyableMapTile> tilesToDestroy;
+
 		private void Awake()
-        {
+		{
+			tileMap = GetComponentInChildren<Tilemap>();
 	        walkerCreator = GetComponent<WalkerCreator>();
 	        walkerCreator.OnChanceSpawnBuilding += ChanceToBuild;
 
@@ -35,8 +42,9 @@ namespace WalterWalk
             }
 
         }
-		private async void ChanceToBuild(Vector3 position, Vector2 direction)
+		private async void ChanceToBuild(Vector3 position, Vector2 direction, Vector3Int tilePosition)
 		{
+
 			int i = UnityEngine.Random.Range(0, 2);
 			if (direction == Vector2.down)
 			{
@@ -54,17 +62,20 @@ namespace WalterWalk
                     case 1: position.z += offsetFromCenter * -1; break;
                 }
             }
+
+			TileBase tile = tileMap.GetTile(tilePosition);
+			
 			if(UnityEngine.Random.value <= chanceToBuild)
 			{
 				await Task.Delay(500); /* wait a bit in case some road spawns up ahead */
-				SpawnBuilding(position);
+				SpawnBuilding(position, tile);
 			}
 			else{
 				print("no building");
 			}
 		}
 
-		private void SpawnBuilding(Vector3 position)
+		private void SpawnBuilding(Vector3 position, TileBase parent)
 		{
 			BuildingPlacer placer = new BuildingPlacer(position);
 			Vector3 size = placer.CreateSize();

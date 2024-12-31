@@ -13,6 +13,8 @@ namespace WalterWalk
 
 		public GameObject turnSign;
 
+		private int numPaths = 0;
+
 		private void Awake()
 		{
 			breadcrumbs = new Queue<Vector3>();
@@ -31,6 +33,11 @@ namespace WalterWalk
 		{
 			if (breadcrumbs.TryDequeue(out Vector3 point))
 			{
+				if (numPaths != 0)
+				{
+					WalkerCreator.Instance.DetroyOldRoad();
+				}
+				numPaths++;
 				return point;
 			}
 			else
