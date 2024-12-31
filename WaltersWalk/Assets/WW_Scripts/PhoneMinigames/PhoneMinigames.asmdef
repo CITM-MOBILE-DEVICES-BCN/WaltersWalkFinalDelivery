@@ -1,0 +1,16 @@
+{
+    "name": "PhoneMinigames",
+    "rootNamespace": "PhoneMinigames",
+    "references": [
+        "GUID:dc880d971c681b9429ccb943b9da6787"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
