@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c4309095f34a44b7b46c8af6fc22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 0.2
   currentDestination: {x: 0, y: 0, z: 0}
 --- !u!54 &1475490859
 Rigidbody:
@@ -924,7 +924,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

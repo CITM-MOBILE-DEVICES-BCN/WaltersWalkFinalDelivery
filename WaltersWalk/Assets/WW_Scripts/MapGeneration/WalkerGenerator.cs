@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,30 +14,39 @@ public class WalkerCreator : MonoBehaviour
     }
 
     //Variables
-    public Grid[,] gridHandler;
-    public List<WalkerObject> Walkers;
+    
     public Tilemap tileMap;
     public RuleTile Floor;
     public RuleTile Road;
     public RuleTile RoadVertical;    
     public RuleTile Wall;
-    public int MapWidth = 30;
-    public int MapHeight = 30;
+    private float MapWidth = 30;
+    public float MapHeight = 30;
 
+    [Tooltip("Percentage chance of duplicating walker and creating another path")]
     [Range(0f, 1f)] public float chance_to_create;
 
-    public int MaximumWalkers = 10;
-    public int TileCount = default;
-    public float FillPercentage = 0.4f;
     public float WaitTime = 0.05f;
 
     [Header("Constraints")]
+    public int MaximumWalkers = 1;
     public bool multiplePaths = false;
     public int MINIMUM_TILES_FOR_TURN = 10;
-    public float roadChance = 0.05f;
+    public int MINIMUM_TILES_FOR_ROAD = 4;
+
+    [Tooltip("Increase for less roads, decrease for more")]
+    public float roadSparcity = 200f;
+    [Tooltip("Increase for less turns, decrease for more")]
+    public float turnSparcity = 200f;
 
     private int tilesSinceRoad = 0;
     private int tilesSinceTurn = 0;
+
+    private Grid[,] gridHandler;
+    private List<WalkerObject> Walkers;
+	private int TileCount = default;
+    
+	public event Action<Vector3> OnTurnPlaced; 
 
     void OnEnable()
     {
@@ -47,24 +57,29 @@ public class WalkerCreator : MonoBehaviour
 
     void InitializeGrid()
     {
-        gridHandler = new Grid[MapWidth, MapHeight];
+        // now that the turning logic ensures overlapping this is not needed
 
-        for (int x = 0; x < gridHandler.GetLength(0); x++)
-        {
-            for (int y = 0; y < gridHandler.GetLength(1); y++)
-            {
-                gridHandler[x, y] = Grid.EMPTY;
-            }
-        }
+        //gridHandler = new Grid[MapWidth, MapHeight];
+
+        //for (int x = 0; x < gridHandler.GetLength(0); x++)
+        //{
+        //    for (int y = 0; y < gridHandler.GetLength(1); y++)
+        //    {
+        //        gridHandler[x, y] = Grid.EMPTY;
+        //    }
+        //}
 
         Walkers = new List<WalkerObject>();
         // MapHeight = start at top center
-        Vector3Int TileCenter = new Vector3Int(gridHandler.GetLength(0) / 2, /*gridHandler.GetLength(1) / 2*/ MapHeight - 1, 0);
+        Vector3Int TileCenter = new Vector3Int( ((int)MapWidth) / 2, /*gridHandler.GetLength(1) / 2*/ ((int) MapHeight) - 1, 0);
 
         WalkerObject curWalker = new WalkerObject(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
-        gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
+       // gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
         tileMap.SetTile(TileCenter, Floor);
         Walkers.Add(curWalker);
+        
+        
+        MapWidth = Mathf.Infinity  ;
 
         TileCount++;
 
@@ -79,7 +94,7 @@ public class WalkerCreator : MonoBehaviour
         }
         else
         {
-            int id = Random.Range(0, 2);
+            int id = UnityEngine.Random.Range(0, 2);
 
 
                 switch (id)
@@ -109,7 +124,7 @@ public class WalkerCreator : MonoBehaviour
 
     IEnumerator CreateFloors()
     {
-        while ((float)TileCount / (float)gridHandler.Length < FillPercentage)
+        while (true)
         {
             bool end = false;
             bool hasCreatedFloor = false;
@@ -117,12 +132,12 @@ public class WalkerCreator : MonoBehaviour
             {
                 Vector3Int curPos = new Vector3Int((int)curWalker._position.x, (int)curWalker._position.y, 0);
 
-                if (gridHandler[curPos.x, curPos.y] != Grid.FLOOR)
-                {
+                
                     RuleTile tile = Floor;
-                    if (tilesSinceRoad > 6 && Random.value <= tilesSinceRoad/100f)
+                    if (tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad/ roadSparcity)
                     {
-                        tilesSinceRoad = 0;
+	                    tilesSinceRoad = 0;
+	                    tilesSinceTurn = 0;
 
                         if (curWalker._direction != Vector2.down)
                         {
@@ -139,9 +154,9 @@ public class WalkerCreator : MonoBehaviour
 
                     tilesSinceTurn++; // keep track of how many tiles spawned since last turn
                     TileCount++;
-                    gridHandler[curPos.x, curPos.y] = Grid.FLOOR;
+                    //gridHandler[curPos.x, curPos.y] = Grid.FLOOR;
                     hasCreatedFloor = true;
-                }
+                
 
                 if (curWalker._position.y == 1) /* At the bottom end of the map */
                 {
@@ -149,11 +164,12 @@ public class WalkerCreator : MonoBehaviour
                 }
 
                 // if the walker is at the left or right bounds force a turn
-                if (curWalker._position.x >=  MapWidth - 2 || curWalker._position.x <= 1)
-                {
-                    Redirect(curWalker);
-                    break;
-                }
+                //if (curWalker._position.x >=  MapWidth - 2 || curWalker._position.x <= 1)
+                //{
+                //    tilesSinceRoad = 0; // no roads just after turning
+                //    Redirect(curWalker);
+                //    break;
+                //}
 
 
             }
@@ -163,7 +179,11 @@ public class WalkerCreator : MonoBehaviour
             //Walker Methods
             if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN)
             {
-                if (ChanceToRedirect()) { tilesSinceTurn = 0; }
+	            if (ChanceToRedirect()) 
+	            { 
+		            tilesSinceTurn = 0; tilesSinceRoad = 0; 
+		            if(OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
+	            }
             }
             UpdatePosition();
 
@@ -202,7 +222,7 @@ public class WalkerCreator : MonoBehaviour
 
         for (int i = 0; i < Walkers.Count; i++)
         {
-            if (UnityEngine.Random.value < tilesSinceTurn/100f )
+	        if (UnityEngine.Random.value < tilesSinceTurn/ turnSparcity )
             {
                 Redirect(Walkers[i]);
                 redirect = true;
@@ -243,11 +263,16 @@ public class WalkerCreator : MonoBehaviour
         {
             WalkerObject FoundWalker = Walkers[i];
             FoundWalker._position += FoundWalker._direction;
-            FoundWalker._position.x = Mathf.Clamp(FoundWalker._position.x, 1, gridHandler.GetLength(0) - 2);
-            FoundWalker._position.y = Mathf.Clamp(FoundWalker._position.y, 1, gridHandler.GetLength(1) - 2);
+            //FoundWalker._position.x = Mathf.Clamp(FoundWalker._position.x, 1, gridHandler.GetLength(0) - 2);
+            //FoundWalker._position.y = Mathf.Clamp(FoundWalker._position.y, 1, gridHandler.GetLength(1) - 2);
             Walkers[i] = FoundWalker;
         }
     }
+    
+	public Vector2 GetWalkerPosition()
+	{
+		return Walkers[0]._position;
+	}
 
     IEnumerator CreateWalls()
     {

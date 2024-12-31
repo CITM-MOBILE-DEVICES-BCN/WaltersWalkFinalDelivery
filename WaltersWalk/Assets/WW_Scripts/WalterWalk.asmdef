@@ -2,7 +2,8 @@
     "name": "WalterWalk",
     "rootNamespace": "WalterWalk",
     "references": [
-        ""
+        "Unity.2D.Tilemap.Editor",
+        "Unity.2D.Tilemap.Extras"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
