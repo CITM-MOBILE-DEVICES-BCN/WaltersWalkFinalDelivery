@@ -100,6 +100,7 @@ namespace WalterWalk
 
 				var building = Instantiate(fittableBuildings[ UnityEngine.Random.Range(0,fittableBuildings.Count )]);
 				building.transform.position = position;
+				WalkerCreator.Instance.AddDestroyableBuilding(building);
 			}
 			else
 			{

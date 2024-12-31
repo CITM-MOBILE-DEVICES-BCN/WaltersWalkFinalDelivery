@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Threading.Tasks;
 using WalterWalk;
 
 public class WalkerCreator : MonoBehaviour
@@ -14,6 +15,9 @@ public class WalkerCreator : MonoBehaviour
         EMPTY
     }
 	public static WalkerCreator Instance { get; private set; }
+
+    public int maxTilesInstanciated;
+    public int TileCount = default;
 
     public Tilemap tileMap;
     public RuleTile Floor;
@@ -45,13 +49,15 @@ public class WalkerCreator : MonoBehaviour
 
     private Grid[,] gridHandler;
     private List<WalkerObject> Walkers;
-	private int TileCount = default;
     
 	public event Action<Vector3> OnTurnPlaced; //  Notify the PathRetriever of the new turn
 	public event Action<Vector3, Vector2, Vector3Int> OnChanceSpawnBuilding; // Notify the BuildingFactory of the chance to spawn
 
 	private Queue<List<DestroyableMapTile>> tilesToDestroy;
 	private List<DestroyableMapTile> currentRoad;
+	
+	private Queue<List<GameObject>> buildingsToDestroy;
+	private List<GameObject> currentRoadBuildings;
 
     void OnEnable()
     {
@@ -104,32 +110,35 @@ public class WalkerCreator : MonoBehaviour
     {
         while (true)
         {
-            bool end = false;
-            bool hasCreatedFloor = false;
-            foreach (WalkerObject curWalker in Walkers)
+            if (TileCount <= maxTilesInstanciated)
             {
-                Vector3Int curPos = new Vector3Int((int)curWalker._position.x, (int)curWalker._position.y, 0);
 
-                
+                bool end = false;
+                bool hasCreatedFloor = false;
+                foreach (WalkerObject curWalker in Walkers)
+                {
+                    Vector3Int curPos = new Vector3Int((int)curWalker._position.x, (int)curWalker._position.y, 0);
+
+
                     RuleTile tile = FloorVertical;
-                    if (tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad/ roadSparcity)
+	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceRoad > 195)
                     {
-	                    tilesSinceRoad = 0;
-	                    tilesSinceTurn = 0;
+                        tilesSinceRoad = 0;
+                        tilesSinceTurn = 0;
 
                         if (curWalker._direction != Vector2.down)
                         {
                             tile = RoadVertical;
                         }
                         else { tile = Road; }
-                       
+
                     }
                     else
                     {
 
-                    // Chance to spawn a building
-	                    OnChanceSpawnBuilding?.Invoke(curWalker.GlobalPosition(), curWalker._direction, curPos);
-                    	
+                        // Chance to spawn a building
+                        OnChanceSpawnBuilding?.Invoke(curWalker.GlobalPosition(), curWalker._direction, curPos);
+
                         tilesSinceRoad++;
                         if (curWalker._direction != Vector2.down)
                         {
@@ -142,37 +151,39 @@ public class WalkerCreator : MonoBehaviour
                     tilesSinceTurn++; // keep track of how many tiles spawned since last turn
                     TileCount++;
                     hasCreatedFloor = true;
-                
-                if (curWalker._position.y == 1) /* At the bottom end of the map */
+
+                    //if (curWalker._position.y == 1) /* At the bottom end of the map */
+                    //{
+                    //    end = true; break;
+                    //}
+
+                }
+
+                if (end) { break; }
+
+                //Walker Methods
+                if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN)
                 {
-                    end = true; break;
+                    if (ChanceToRedirect())
+                    {
+                        AddRoadToQueue();
+                        tilesSinceTurn = 0; tilesSinceRoad = 0;
+                        if (OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
+                    }
+                }
+                UpdatePosition();
+
+                if (hasCreatedFloor)
+                {
+                    yield return new WaitForSeconds(WaitTime);
+                }
+                if (multiplePaths)
+                {
+                    ChanceToCreate();
                 }
 
             }
-
-            if (end) { break; }
-
-            //Walker Methods
-            if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN)
-            {
-	            if (ChanceToRedirect()) 
-	            { 
-	             	AddRoadToQueue();
-		            tilesSinceTurn = 0; tilesSinceRoad = 0; 
-		            if(OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
-	            }
-            }
-            UpdatePosition();
-
-            if (hasCreatedFloor)
-            {
-                yield return new WaitForSeconds(WaitTime);
-            }
-            if (multiplePaths)
-            {
-                ChanceToCreate();
-            }
-
+            yield return null;
         }
         yield return null;
     }
@@ -283,20 +294,46 @@ public class WalkerCreator : MonoBehaviour
 		currentRoad.Add(tile);
 	}
 	
+	public void AddDestroyableBuilding(GameObject building)
+	{
+		if (currentRoadBuildings == null){currentRoadBuildings = new List<GameObject>();}
+		currentRoadBuildings.Add(building);
+	}
+	
 	private void AddRoadToQueue()
 	{
 		if(tilesToDestroy == null){tilesToDestroy = new Queue<List<DestroyableMapTile>>();}
 		tilesToDestroy.Enqueue(new List<DestroyableMapTile> ( currentRoad ) ); // enqueue a new list so that it wont be lost when cleared
-        if (currentRoad == null) { currentRoad = new List<DestroyableMapTile>(); }
-        currentRoad.Clear();
+        
+		if (currentRoad == null) { currentRoad = new List<DestroyableMapTile>(); }
+		currentRoad.Clear();
+        
+        
+        
+		if(buildingsToDestroy == null){buildingsToDestroy = new Queue<List<GameObject>>();}
+		if(currentRoadBuildings != null) buildingsToDestroy.Enqueue(new List<GameObject>(currentRoadBuildings) ) ;
+		
+		if (currentRoadBuildings == null){currentRoadBuildings = new List<GameObject>();}
+		currentRoadBuildings.Clear();
+        
 	}
 	
-	public void DetroyOldRoad() /* called from the Path follower after crossing to the next road */
+	public async Task DetroyOldRoad() /* called from the Path follower after crossing to the next road */
 	{
+		
+		await Task.Delay(1000);
+		
 		List<DestroyableMapTile> old =  tilesToDestroy.Dequeue();
 		for(int i = 0; i < old.Count; ++i)
 		{
+            TileCount--;
 			Destroy(old[i].gameObject);
+		}
+		
+		List<GameObject> oldBuildings = buildingsToDestroy.Dequeue();
+		for(int i = 0; i < oldBuildings.Count; ++i)
+		{
+			Destroy(oldBuildings[i].gameObject);
 		}
 	}
 }
