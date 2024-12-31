@@ -17,6 +17,7 @@ public class WalkerCreator : MonoBehaviour
     
     public Tilemap tileMap;
     public RuleTile Floor;
+    public RuleTile FloorVertical;
     public RuleTile Road;
     public RuleTile RoadVertical;    
     public RuleTile Wall;
@@ -133,7 +134,7 @@ public class WalkerCreator : MonoBehaviour
                 Vector3Int curPos = new Vector3Int((int)curWalker._position.x, (int)curWalker._position.y, 0);
 
                 
-                    RuleTile tile = Floor;
+                    RuleTile tile = FloorVertical;
                     if (tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad/ roadSparcity)
                     {
 	                    tilesSinceRoad = 0;
@@ -149,6 +150,11 @@ public class WalkerCreator : MonoBehaviour
                     else
                     {
                         tilesSinceRoad++;
+                        if (curWalker._direction != Vector2.down)
+                        {
+                            tile = Floor;
+                        }
+
                     }
                     tileMap.SetTile(curPos, tile);
 

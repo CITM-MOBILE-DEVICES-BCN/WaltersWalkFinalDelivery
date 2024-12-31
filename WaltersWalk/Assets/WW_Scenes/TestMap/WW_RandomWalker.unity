@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 916179771}
   Floor: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
+  FloorVertical: {fileID: 0}
   Road: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
   RoadVertical: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
   Wall: {fileID: 11400000, guid: 6ea32271c8b529b47b4a34444733ab0e, type: 2}
@@ -651,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c4309095f34a44b7b46c8af6fc22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 1
   currentDestination: {x: 0, y: 0, z: 0}
 --- !u!54 &1475490859
 Rigidbody:
@@ -815,7 +816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 1575429370}
-  Floor: {fileID: 11400000, guid: 37aef9e97dc0bd44d9bb7a2a52da49f3, type: 2}
+  Floor: {fileID: 11400000, guid: e5a1c93a64aab264c9d39f44e26b9982, type: 2}
+  FloorVertical: {fileID: 11400000, guid: eb9aae2bddb00f748bd66b968a0abfba, type: 2}
   Road: {fileID: 11400000, guid: 6ea32271c8b529b47b4a34444733ab0e, type: 2}
   RoadVertical: {fileID: 11400000, guid: ac68c449feb10ca459a52bb5ae84ba97, type: 2}
   Wall: {fileID: 11400000, guid: 6ea32271c8b529b47b4a34444733ab0e, type: 2}
@@ -985,6 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 804558157}
   Floor: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
+  FloorVertical: {fileID: 0}
   Road: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
   RoadVertical: {fileID: 11400000, guid: 16f3bbb64ba482a40b574b432f74a9f8, type: 2}
   Wall: {fileID: 11400000, guid: 6ea32271c8b529b47b4a34444733ab0e, type: 2}
