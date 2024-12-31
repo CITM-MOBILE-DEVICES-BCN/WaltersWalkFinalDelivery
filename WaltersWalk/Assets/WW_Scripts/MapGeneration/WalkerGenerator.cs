@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using WalterWalk;
 
 public class WalkerCreator : MonoBehaviour
 {
@@ -47,7 +48,8 @@ public class WalkerCreator : MonoBehaviour
     private List<WalkerObject> Walkers;
 	private int TileCount = default;
     
-	public event Action<Vector3> OnTurnPlaced; 
+	public event Action<Vector3> OnTurnPlaced; //  Notify the PathRetriever of the new turn
+	public event Action<Vector3, Vector2> OnChanceSpawnBuilding; // Notify the BuildingFactory of the chance to spawn
 
     void OnEnable()
     {
@@ -58,17 +60,6 @@ public class WalkerCreator : MonoBehaviour
 
     void InitializeGrid()
     {
-        // now that the turning logic ensures overlapping this is not needed
-
-        //gridHandler = new Grid[MapWidth, MapHeight];
-
-        //for (int x = 0; x < gridHandler.GetLength(0); x++)
-        //{
-        //    for (int y = 0; y < gridHandler.GetLength(1); y++)
-        //    {
-        //        gridHandler[x, y] = Grid.EMPTY;
-        //    }
-        //}
 
         Walkers = new List<WalkerObject>();
         // MapHeight = start at top center
@@ -106,21 +97,7 @@ public class WalkerCreator : MonoBehaviour
         }
 
         return Vector2.down;
-        //int choice = Mathf.FloorToInt(UnityEngine.Random.value * 3.99f);
 
-        //switch (choice)
-        //{
-        //    case 0:
-        //        return Vector2.down;
-        //    case 1:
-        //        return Vector2.left;
-        //    case 2:
-        //        return Vector2.down;
-        //    case 3:
-        //        return Vector2.right;
-        //    default:
-        //        return Vector2.zero;
-        //}
     }
 
     IEnumerator CreateFloors()
@@ -149,6 +126,12 @@ public class WalkerCreator : MonoBehaviour
                     }
                     else
                     {
+
+                    // Chance to spawn a building
+	                    OnChanceSpawnBuilding?.Invoke(curWalker.GlobalPosition(), curWalker._direction);
+                        //BuildingPlacer placer = new BuildingPlacer(curWalker.GlobalPosition());
+                    	//Vector3 size = placer.CreateSize();
+                    	
                         tilesSinceRoad++;
                         if (curWalker._direction != Vector2.down)
                         {
@@ -168,15 +151,6 @@ public class WalkerCreator : MonoBehaviour
                 {
                     end = true; break;
                 }
-
-                // if the walker is at the left or right bounds force a turn
-                //if (curWalker._position.x >=  MapWidth - 2 || curWalker._position.x <= 1)
-                //{
-                //    tilesSinceRoad = 0; // no roads just after turning
-                //    Redirect(curWalker);
-                //    break;
-                //}
-
 
             }
 

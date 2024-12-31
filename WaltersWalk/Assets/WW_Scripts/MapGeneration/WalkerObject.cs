@@ -16,4 +16,9 @@ public class WalkerObject
         this._direction = _direction;
     }
 
+    public Vector3 GlobalPosition()
+    {
+        return new Vector3(_position.x + .5f, 0, _position.y + .5f);
+    }
+
 }
