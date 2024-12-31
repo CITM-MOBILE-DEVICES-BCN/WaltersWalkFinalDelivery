@@ -67,7 +67,7 @@ namespace WalterWalk
 			
 			if(UnityEngine.Random.value <= chanceToBuild)
 			{
-				await Task.Delay(500); /* wait a bit in case some road spawns up ahead */
+				await Task.Delay(100); /* wait a bit in case some road spawns up ahead */
 				SpawnBuilding(position, tile);
 			}
 			else{

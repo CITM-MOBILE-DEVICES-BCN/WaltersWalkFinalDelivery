@@ -11,5 +11,13 @@ namespace WalterWalk
             WalkerCreator.Instance.AddDestroyableTile(this);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.tag == "building")
+            {
+                Destroy(other.gameObject);
+            }
+        }
+
     }
 }

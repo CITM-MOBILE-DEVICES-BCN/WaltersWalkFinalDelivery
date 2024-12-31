@@ -121,7 +121,7 @@ public class WalkerCreator : MonoBehaviour
 
 
                     RuleTile tile = FloorVertical;
-	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceRoad > 195)
+	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceRoad > 148)
                     {
                         tilesSinceRoad = 0;
                         tilesSinceTurn = 0;
@@ -175,7 +175,8 @@ public class WalkerCreator : MonoBehaviour
 
                 if (hasCreatedFloor)
                 {
-                    yield return new WaitForSeconds(WaitTime);
+	                yield return null;
+                    //yield return new WaitForSeconds(WaitTime);
                 }
                 if (multiplePaths)
                 {

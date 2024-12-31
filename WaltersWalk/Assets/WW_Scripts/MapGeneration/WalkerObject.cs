@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkerObject
+public class WalkerObject : MonoBehaviour
 {
 
     public Vector2 _position;
