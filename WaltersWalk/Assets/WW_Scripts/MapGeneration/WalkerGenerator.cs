@@ -14,7 +14,6 @@ public class WalkerCreator : MonoBehaviour
         WALL,
         EMPTY
     }
-	public static WalkerCreator Instance { get; private set; }
 
     public int maxTilesInstanciated;
     public int TileCount = default;
@@ -58,6 +57,8 @@ public class WalkerCreator : MonoBehaviour
 	
 	private Queue<List<GameObject>> buildingsToDestroy;
 	private List<GameObject> currentRoadBuildings;
+	
+	public WalkerObject walkerPrefab;
 
     void OnEnable()
     {
@@ -71,7 +72,10 @@ public class WalkerCreator : MonoBehaviour
         // MapHeight = start at top center
         Vector3Int TileCenter = new Vector3Int( ((int)MapWidth) / 2, /*gridHandler.GetLength(1) / 2*/ ((int) MapHeight) - 1, 0);
 
-        WalkerObject curWalker = new WalkerObject(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
+	    WalkerObject curWalker = Instantiate(walkerPrefab);
+	    curWalker.Init(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
+	    
+	    //WalkerObject curWalker = new WalkerObject(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
        // gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
         tileMap.SetTile(TileCenter, Floor);
         Walkers.Add(curWalker);
@@ -277,16 +281,9 @@ public class WalkerCreator : MonoBehaviour
     }
 
 
-	private void Awake()
+	private void Start()
 	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-		else
-		{
-			Destroy(gameObject); 
-		}
+		GameManager.Instance.mapCreator = this;
 	}
 	
 	public void AddDestroyableTile(DestroyableMapTile tile)
@@ -322,7 +319,7 @@ public class WalkerCreator : MonoBehaviour
 	public async Task DetroyOldRoad() /* called from the Path follower after crossing to the next road */
 	{
 		
-		await Task.Delay(1000);
+		await Task.Delay(1600);
 		
 		List<DestroyableMapTile> old =  tilesToDestroy.Dequeue();
 		for(int i = 0; i < old.Count; ++i)
@@ -336,5 +333,18 @@ public class WalkerCreator : MonoBehaviour
 		{
 			Destroy(oldBuildings[i].gameObject);
 		}
+		//TODO clean up actual tilemap tiles
+		//tileMap.ClearAllTiles();
+	}
+	
+	void OnApplicationQuit()
+	{
+		Debug.Log("Exiting Play Mode: Performing cleanup.");
+		
+		buildingsToDestroy.Clear();
+		currentRoad.Clear();
+		tilesToDestroy.Clear();
+		currentRoadBuildings.Clear();
+
 	}
 }

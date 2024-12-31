@@ -122,6 +122,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1051829781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051829783}
+  - component: {fileID: 1051829782}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1051829782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051829781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a92413d72e4ac44d9dd143952a1a33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapCreator: {fileID: 0}
+--- !u!4 &1051829783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051829781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.297623, y: -8.452988, z: 393.38754}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1116876329
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c4309095f34a44b7b46c8af6fc22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.5
+  Speed: 0.3
   currentDestination: {x: 0, y: 0, z: 0}
 --- !u!54 &1475490859
 Rigidbody:
@@ -613,6 +658,8 @@ MonoBehaviour:
   MINIMUM_TILES_FOR_ROAD: 10
   roadSparcity: 200
   turnSparcity: 200
+  walkerPrefab: {fileID: 6426430251120878378, guid: d364b7aadd9f41a4fa7d17e6ec494734,
+    type: 3}
 --- !u!114 &1575429375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceToBuild: 1
-  offsetFromCenter: 7
+  offsetFromCenter: 9
   BuildingCollection:
   - size: {x: 0, y: 0, z: 0}
     building: {fileID: 2307140316891569734, guid: 71bc2f29740816041985a9647d4e7418,
@@ -804,3 +851,4 @@ SceneRoots:
   - {fileID: 1116876331}
   - {fileID: 1575429368}
   - {fileID: 1475490856}
+  - {fileID: 1051829783}

@@ -35,7 +35,8 @@ namespace WalterWalk
 			{
 				if (numPaths != 0)
 				{
-					WalkerCreator.Instance.DetroyOldRoad();
+					GameManager.Instance?.mapCreator?.DetroyOldRoad();
+
 				}
 				numPaths++;
 				return point;

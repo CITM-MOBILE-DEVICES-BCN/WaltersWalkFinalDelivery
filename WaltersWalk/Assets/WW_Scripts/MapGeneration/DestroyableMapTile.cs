@@ -8,7 +8,8 @@ namespace WalterWalk
     {
         void Start()
         {
-            WalkerCreator.Instance.AddDestroyableTile(this);
+            GameManager.Instance.mapCreator?.AddDestroyableTile(this);
+            //transform.parent = transform.parent.parent.parent;
         }
 
         private void OnTriggerEnter(Collider other)

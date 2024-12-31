@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +15,30 @@ public class WalkerObject : MonoBehaviour
         this._ChanceToChange = _ChanceToChange;
         this._direction = _direction;
     }
+    
+	public void Init(Vector2 _position, Vector2 _direction, float _ChanceToChange)
+	{
+		this._position = _position;
+		this._ChanceToChange = _ChanceToChange;
+		this._direction = _direction;
+	}
+
+    private void Update()
+    {
+        transform.position = GlobalPosition();
+    }
 
     public Vector3 GlobalPosition()
     {
         return new Vector3(_position.x + .5f, 0, _position.y + .5f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "building")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 }
