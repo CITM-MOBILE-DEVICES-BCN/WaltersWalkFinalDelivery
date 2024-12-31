@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WalterWalk;
 
 namespace PhoneMinigames
 {
     public class MiniGameSelector : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public GameObject[] minigamePrefabs;
+        WeightedRandomSelector memeWeightCalculator;
+
         void Start()
         {
-        
+            memeWeightCalculator = new WeightedRandomSelector(minigamePrefabs.Length);
+            GetRandomMinigame();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void GetRandomMinigame()
         {
-        
+            int index = memeWeightCalculator.GetNextWeightedRandom();
+            Instantiate(minigamePrefabs[index],gameObject.transform);
         }
+
     }
 }
