@@ -29,7 +29,7 @@ namespace PhoneMinigames
                 Debug.Log("Corect");
                 memeSelector.GetRandomMeme();
                 memeImage.color = Color.green;
-                gameObject.transform.DOMoveX(1, 0.5f).OnComplete(() => Destroy(gameObject)); ;
+                gameObject.transform.DOMoveX(1, 0.5f).OnComplete(() => Destroy(gameObject)); 
             }
             else
             {

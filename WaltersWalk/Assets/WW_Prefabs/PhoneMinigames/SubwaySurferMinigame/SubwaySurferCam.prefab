@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2585782938198445114}
   - component: {fileID: 7699088461843025432}
   - component: {fileID: 2989391473306095357}
+  - component: {fileID: 6746861236433389413}
   - component: {fileID: 8307932607230845519}
   m_Layer: 0
   m_Name: Capsule
@@ -84,6 +85,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6746861236433389413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852485104867533256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808d32fb02338d44fa48d0f4c64049b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &8307932607230845519
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -117,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7890437894882529644}
   - component: {fileID: 1948461830774635104}
-  - component: {fileID: 6912841799126706205}
   - component: {fileID: 6356002279224039097}
   m_Layer: 0
   m_Name: SubwaySurferCam
@@ -194,14 +206,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6912841799126706205
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372801067437545559}
-  m_Enabled: 1
 --- !u!114 &6356002279224039097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +263,7 @@ GameObject:
   - component: {fileID: 8365013278499994157}
   - component: {fileID: 1152277712234022053}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
