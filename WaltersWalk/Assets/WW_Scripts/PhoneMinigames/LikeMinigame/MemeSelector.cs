@@ -14,15 +14,13 @@ namespace PhoneMinigames
         public GameObject mask;
 
         WeightedRandomSelector memeWeightCalculator;
-        MemeTransition memeTransition;
-
         
         GameObject newMeme;
 
         void Start()
         {
             memeWeightCalculator = new WeightedRandomSelector(memesPrefab.Length);
-            memeTransition = new MemeTransition();
+
             GetRandomMeme();
         }
 
