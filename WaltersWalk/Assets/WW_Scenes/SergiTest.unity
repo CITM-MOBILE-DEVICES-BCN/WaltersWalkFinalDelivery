@@ -2319,6 +2319,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -47.458
       objectReference: {fileID: 0}
+    - target: {fileID: 5834767732988014515, guid: 590df5e39e763d343a412bebd6283fdb,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834767732988014515, guid: 590df5e39e763d343a412bebd6283fdb,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760558708025772796, guid: 590df5e39e763d343a412bebd6283fdb,
+        type: 3}
+      propertyPath: m_RenderAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8259493587488055306, guid: 590df5e39e763d343a412bebd6283fdb,
         type: 3}
       propertyPath: m_Name
