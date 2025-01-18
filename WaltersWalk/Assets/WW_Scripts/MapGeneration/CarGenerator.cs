@@ -18,7 +18,7 @@ namespace WalterWalk
         // Start is called before the first frame update
         void Start()
         {
-            spawnTime = Random.Range(3f, 5f) + Random.Range(3f, 5f);
+            spawnTime = Random.Range(3f, 5f) + Random.Range(3f, 5f) -1f;
 
             for (int i = 0; i < numCars; i++)
             {
