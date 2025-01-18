@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class ArmsControllerTest : MonoBehaviour
 {
-	private Animator animator;
-	private bool isPhoneActive = false;
+    private Animator animator;
+    private AudioSource audioSource;
+    public AudioClip pillsClip;
+    public AudioClip smokingClip;
+    public AudioClip scratchingClip;
 
-	void Start()
-	{
-		animator = GetComponent<Animator>();
-	}
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
-	void Update()
-	{
-
-		if (Input.GetKeyDown(KeyCode.Q))
-		{
-			animator.SetBool("isPhoneActive", true);
-			animator.SetTrigger("PhoneOut");
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("isPhoneActive", true);
+            animator.SetTrigger("PhoneOut");
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -28,18 +31,25 @@ public class ArmsControllerTest : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E))
-		{
+        {
             animator.SetTrigger("Scratching");
-		}
+            audioSource.clip = scratchingClip;
+            audioSource.Play();
+        }
 
-		if (Input.GetKeyDown(KeyCode.R))
-		{
+        if (Input.GetKeyDown(KeyCode.R))
+        {
             animator.SetTrigger("Pills");
-		}
+            audioSource.clip = pillsClip;
+            audioSource.Play();
+        }
 
-		if (Input.GetKeyDown(KeyCode.T))
-		{
+        if (Input.GetKeyDown(KeyCode.T))
+        {
             animator.SetTrigger("SmokeCig");
-		}
-	}
+            audioSource.clip = smokingClip;
+            audioSource.Play();
+        }
+    }
 }
+
