@@ -13,30 +13,18 @@ namespace WalterWalk
         public Button buyButton;
 
         private GameDataManager gameDataManager;
-        private string currentItemName;
-        private int currentItemPrice;
-
-        private Transform lastHoveredItem;
-        private Vector3 originalScale;
+        private Transform hoveredItem;
+        private Vector3 originalScale; 
 
         private void Start()
         {
-
             gameDataManager = new GameDataManager();
-
-            itemPanel.SetActive(false);
-
+            itemPanel.SetActive(false); 
         }
 
         private void Update()
         {
             HandleItemHover();
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                gameDataManager.AddCurrency(100);
-                Debug.Log($"Dinero añadido: {gameDataManager.GetCurrency()} $");
-            }
         }
 
         private void HandleItemHover()
@@ -47,50 +35,59 @@ namespace WalterWalk
             if (Physics.Raycast(ray, out hit))
             {
                 ItemInfo itemInfo = hit.transform.GetComponent<ItemInfo>();
+
                 if (itemInfo != null)
                 {
+                    if (hoveredItem == hit.transform)
+                        return;
 
-                    itemPanel.SetActive(true);
-                    currentItemName = itemInfo.itemName;
-                    currentItemPrice = itemInfo.price;
-                    itemNameText.text = "x1 " + currentItemName;
-                    itemPriceText.text = "$" + currentItemPrice;
+                    ResetHoveredItem();
+                    hoveredItem = hit.transform;
+                    originalScale = hoveredItem.localScale;
 
-
-                    if (lastHoveredItem != hit.transform)
-                    {
-                        ResetLastHoveredItem(); 
-                        lastHoveredItem = hit.transform;
-                        originalScale = lastHoveredItem.localScale;
-                        lastHoveredItem.DOScale(originalScale * 1.2f, 0.2f); 
-                    }
+                    hoveredItem.DOScale(originalScale * 1.2f, 0.2f);
+                    ShowItemPanel(itemInfo);
                 }
                 else
                 {
-                    ResetLastHoveredItem(); 
-                    itemPanel.SetActive(false);
+                    ResetHoveredItem();
                 }
             }
             else
             {
-                ResetLastHoveredItem(); 
-                itemPanel.SetActive(false);
+                ResetHoveredItem();
             }
         }
 
-        private void ResetLastHoveredItem()
+        private void ShowItemPanel(ItemInfo itemInfo)
         {
-            if (lastHoveredItem != null)
+            itemPanel.SetActive(true);
+            itemNameText.text = $"x1 {itemInfo.itemName}";
+            itemPriceText.text = $"${itemInfo.price}";
+        }
+
+        private void ResetHoveredItem()
+        {
+            if (hoveredItem != null)
             {
-                lastHoveredItem.DOScale(originalScale, 0.2f); 
-                lastHoveredItem = null;
+                hoveredItem.DOScale(originalScale, 0.2f);
+                hoveredItem = null;
             }
+
+            itemPanel.SetActive(false);
         }
 
         public void OnBuyButtonClicked()
         {
-            string result = gameDataManager.TryBuyItem(currentItemName, currentItemPrice);
-            Debug.Log(result);
+            if (hoveredItem != null)
+            {
+                ItemInfo itemInfo = hoveredItem.GetComponent<ItemInfo>();
+                if (itemInfo != null)
+                {
+                    string result = gameDataManager.TryBuyItem(itemInfo.itemName, itemInfo.price);
+                    Debug.Log(result);
+                }
+            }
         }
     }
 }
