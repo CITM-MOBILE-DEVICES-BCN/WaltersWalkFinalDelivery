@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: burgir (2x2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce1bf3b1464d3d84d8d82c9cef695c5b,
+        type: 3}
+      propertyPath: m_TagString
+      value: building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -117,5 +122,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.070779875, y: 0.07106769, z: 0.108480774}
-  m_Center: {x: 0.0063332915, y: 0.03551657, z: 0.008001727}
+  m_Size: {x: 0.04881753, y: 0.071067706, z: 0.06871408}
+  m_Center: {x: 0.004167219, y: 0.035516582, z: 0.004114429}

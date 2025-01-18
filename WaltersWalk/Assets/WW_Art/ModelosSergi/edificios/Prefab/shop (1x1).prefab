@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: shop (1x1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a69a42e3588f38488c7b6e5ff900553,
+        type: 3}
+      propertyPath: m_TagString
+      value: building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

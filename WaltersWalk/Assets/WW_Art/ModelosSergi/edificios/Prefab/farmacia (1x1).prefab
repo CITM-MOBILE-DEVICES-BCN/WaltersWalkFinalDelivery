@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: farmacia (1x1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f4b348c995244e41b3af7149b6c97a6,
+        type: 3}
+      propertyPath: m_TagString
+      value: building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

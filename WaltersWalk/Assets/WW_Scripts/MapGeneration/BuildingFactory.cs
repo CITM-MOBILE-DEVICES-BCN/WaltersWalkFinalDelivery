@@ -19,7 +19,7 @@ namespace WalterWalk
 	public class BuildingFactory : MonoBehaviour
 	{
 		public float chanceToBuild = 1f;
-		public float offsetFromCenter = 18f;
+		public float [] offsetFromCenter;
 		
 		private Tilemap tileMap;
 
@@ -44,22 +44,23 @@ namespace WalterWalk
         }
 		private async void ChanceToBuild(Vector3 position, Vector2 direction, Vector3Int tilePosition)
 		{
+			float yRotation = 0f;
 
 			int i = UnityEngine.Random.Range(0, 2);
 			if (direction == Vector2.down)
 			{
 				switch (i)
 				{ /* Left or right side of road */
-					case 0: position.x += offsetFromCenter; break;
-					case 1: position.x += offsetFromCenter * -1; break;
+					case 0: position.x += offsetFromCenter[UnityEngine.Random.Range(0, offsetFromCenter.Length-1)];  break;
+					case 1: position.x += offsetFromCenter[UnityEngine.Random.Range(0, offsetFromCenter.Length-1)] * -1; yRotation = 180f; break;
 				}
 			}
 			else
 			{
                 switch (i)
                 { /* Left or right side of road */
-                    case 0: position.z += offsetFromCenter; break;
-                    case 1: position.z += offsetFromCenter * -1; break;
+                    case 0: position.z += offsetFromCenter[UnityEngine.Random.Range(0, offsetFromCenter.Length-1)]; yRotation = -90; break;
+                    case 1: position.z += offsetFromCenter[UnityEngine.Random.Range(0, offsetFromCenter.Length-1)] * -1; yRotation = 90; break;
                 }
             }
 
@@ -68,14 +69,14 @@ namespace WalterWalk
 			if(UnityEngine.Random.value <= chanceToBuild)
 			{
 				await Task.Delay(100); /* wait a bit in case some road spawns up ahead */
-				SpawnBuilding(position, tile);
+				SpawnBuilding(position, tile, yRotation);
 			}
 			else{
 				print("no building");
 			}
 		}
 
-		private void SpawnBuilding(Vector3 position, TileBase parent)
+		private void SpawnBuilding(Vector3 position, TileBase parent, float yRotation = 0)
 		{
 			BuildingPlacer placer = new BuildingPlacer(position);
 			Vector3 size = placer.CreateSize();
@@ -84,7 +85,7 @@ namespace WalterWalk
 
 			for (int i = 0; i < BuildingCollection.Count; ++i)
 			{
-				if (DoesBuildingFit(BuildingCollection[i].size, size))
+				if (DoesBuildingFit(BuildingCollection[i].size, size, yRotation))
 				{
 					fittableBuildings.Add(BuildingCollection[i].building);
 
@@ -100,6 +101,7 @@ namespace WalterWalk
 
 				var building = Instantiate(fittableBuildings[ UnityEngine.Random.Range(0,fittableBuildings.Count )]);
 				building.transform.position = position;
+				building.transform.eulerAngles = new  Vector3(0, yRotation, 0);
 				GameManager.Instance.mapCreator.AddDestroyableBuilding(building);
                 //WalkerCreator.Instance.AddDestroyableBuilding(building);
 			}
@@ -110,8 +112,15 @@ namespace WalterWalk
 			
 		}
 
-		private bool DoesBuildingFit(Vector3 building_size, Vector3 parcel_size)
+		private bool DoesBuildingFit(Vector3 building_size, Vector3 parcel_size, float YRotation)
 		{
+			//if(YRotation == 90f ||  YRotation == -90f) /* if the building is rotated change the axis */
+			//{
+			//	float buff = building_size.z;
+			//	building_size.z = building_size.x;
+			//	building_size.x = buff;
+			//}
+
 			return (building_size.x <= parcel_size.x && building_size.y <= parcel_size.y && building_size.z <= parcel_size.z);
 		}
 	

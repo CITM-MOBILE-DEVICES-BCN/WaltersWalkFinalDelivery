@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: restaurant (2x1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34b65f5996051e1409c635b55e4f34d0,
+        type: 3}
+      propertyPath: m_TagString
+      value: building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

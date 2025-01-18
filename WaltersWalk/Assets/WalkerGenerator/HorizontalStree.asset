@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HorizontalStree
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_DefaultGameObject: {fileID: 5126134179011450709, guid: bb9dcfe855edfb04f9f32aaf8373f07c,
+  m_DefaultGameObject: {fileID: 6391611630190446439, guid: e4ae0876fe3bd5f4289b5bb830154a86,
     type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []

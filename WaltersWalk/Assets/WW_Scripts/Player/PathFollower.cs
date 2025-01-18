@@ -21,6 +21,7 @@ namespace WalterWalk
 			await Task.Delay(6000); // 6 seconds
             path = GetComponent<PathRetriever>();
             currentDestination = path.PopPoint();
+			currentDestination.y = transform.position.y;
 		}
 
         // Update is called once per frame
@@ -28,7 +29,7 @@ namespace WalterWalk
         {
 			if (path != null)
 			{
-				if (Vector3.Distance(transform.position , currentDestination) <= 1.5f)
+				if (Vector3.Distance(transform.position , currentDestination) <= 0.5f)
 				{
                     currentDestination = path.PopPoint(); /* Get next destination */
 					currentDestination.y = transform.position.y; // Lock y

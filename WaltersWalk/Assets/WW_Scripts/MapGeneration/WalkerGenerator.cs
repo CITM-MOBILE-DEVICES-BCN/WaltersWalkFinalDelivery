@@ -319,7 +319,7 @@ public class WalkerCreator : MonoBehaviour
 	public async Task DetroyOldRoad() /* called from the Path follower after crossing to the next road */
 	{
 		
-		await Task.Delay(1600);
+		await Task.Delay(8000);
 		
 		List<DestroyableMapTile> old =  tilesToDestroy.Dequeue();
 		for(int i = 0; i < old.Count; ++i)
