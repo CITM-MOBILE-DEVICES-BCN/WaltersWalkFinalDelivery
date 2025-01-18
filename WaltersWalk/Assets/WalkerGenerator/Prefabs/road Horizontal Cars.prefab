@@ -81,9 +81,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: 1
-  carSpeed: 10
+  carSpeed: 12
   carPref: {fileID: 1091931728508119353, guid: acca8e24166fbe24c906b8b63e3aa810, type: 3}
   cars: []
+  goesDown: 0
 --- !u!1 &3532239408515605705
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,9 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: 0
-  carSpeed: 10
+  carSpeed: 12
   carPref: {fileID: 1091931728508119353, guid: acca8e24166fbe24c906b8b63e3aa810, type: 3}
   cars: []
+  goesDown: 0
 --- !u!1 &6391611630190446439
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +324,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.64
+      value: 6.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}

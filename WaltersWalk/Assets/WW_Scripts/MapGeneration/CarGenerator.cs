@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +13,14 @@ namespace WalterWalk
         public List<Car> cars = new List<Car>();
 
         private float spawnTime;
-        private int currentIndex = 0;
+	    private int currentIndex = 0;
+        
+	    public bool goesDown = false;
 
         // Start is called before the first frame update
         void Start()
         {
-            spawnTime = Random.Range(3f, 5f) + Random.Range(3f, 5f);
+            spawnTime = Random.Range(3f, 5f) + Random.Range(3f, 5f) -1f;
 
             for (int i = 0; i < numCars; i++)
             {
@@ -26,7 +28,8 @@ namespace WalterWalk
                 spawned.gameObject.transform.position = transform.position;
                 spawned.gameObject.SetActive(false);
                 spawned.speed = carSpeed;
-                spawned.dir = dir;
+	            spawned.dir = dir;
+	            spawned.goesDown = goesDown;
                 cars.Add(spawned);
             }
 
