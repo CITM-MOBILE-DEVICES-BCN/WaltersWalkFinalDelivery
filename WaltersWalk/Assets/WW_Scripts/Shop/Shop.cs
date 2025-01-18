@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WalterWalk
 {
-    public class GameDataComponent : MonoBehaviour
+    public class Shop : MonoBehaviour
     {
         private GameDataManager gameDataManager;
 

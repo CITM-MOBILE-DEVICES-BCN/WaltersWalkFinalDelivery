@@ -3,7 +3,8 @@
     "rootNamespace": "WalterWalk",
     "references": [
         "Unity.2D.Tilemap.Editor",
-        "Unity.2D.Tilemap.Extras"
+        "Unity.2D.Tilemap.Extras",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
