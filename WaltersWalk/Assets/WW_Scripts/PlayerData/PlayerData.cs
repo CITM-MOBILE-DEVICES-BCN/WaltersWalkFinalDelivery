@@ -23,7 +23,7 @@ namespace WalterWalk
         public int currency = 0;
         public List<Item> itemsOwned = new List<Item>
         {
-            new Item("Tobacco", false),
+            new Item("Cigarette", false),
             new Item("LSD", false),
             new Item("BubbleGum", false),
             new Item("SportShoes", false),

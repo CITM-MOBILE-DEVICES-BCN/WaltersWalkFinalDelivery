@@ -28,15 +28,24 @@ namespace WalterWalk
             return item != null && !item.isOwned && playerData.currency >= price;
         }
 
-        public bool BuyItem(string itemName, int price)
+        public string TryBuyItem(string itemName, int price)
         {
-            if (!CanBuyItem(itemName, price)) return false;
-
             var item = playerData.itemsOwned.Find(i => i.itemName == itemName);
+
+            if (item == null)
+                return $"El ítem {itemName} no existe.";
+
+            if (item.isOwned)
+                return $"Ya tienes un {itemName}.";
+
+            if (playerData.currency < price)
+                return "No tienes suficiente dinero.";
+
+            // Compra exitosa
             playerData.currency -= price;
             item.isOwned = true;
             SavePlayerData();
-            return true;
+            return $"Has comprado {itemName} por ${price}.";
         }
 
         private void EnsureDataFileExists()
