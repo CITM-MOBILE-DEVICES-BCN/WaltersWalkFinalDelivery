@@ -124,6 +124,8 @@ Transform:
   m_Children:
   - {fileID: 3369409217136027519}
   - {fileID: 3007389285754548159}
+  - {fileID: 5551199386933467342}
+  - {fileID: 48829470717492464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7539140991670986728
@@ -195,6 +197,104 @@ Transform:
   - {fileID: 9131406186867342962}
   m_Father: {fileID: 8073560336663245471}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &5360160897277567749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48829470717492464}
+  - component: {fileID: 5400192464518018879}
+  m_Layer: 0
+  m_Name: CarSpawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48829470717492464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360160897277567749}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6, y: 1.23, z: -21}
+  m_LocalScale: {x: 1, y: 0.90909094, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8073560336663245471}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5400192464518018879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360160897277567749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec9dcd4927b126479ea8e4abd143bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: 1
+  carSpeed: 12
+  carPref: {fileID: 1091931728508119353, guid: acca8e24166fbe24c906b8b63e3aa810, type: 3}
+  cars: []
+  goesDown: 1
+--- !u!1 &8955599160590746587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5551199386933467342}
+  - component: {fileID: 8545434671162997788}
+  m_Layer: 0
+  m_Name: CarSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5551199386933467342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955599160590746587}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8, y: 1.23, z: 25.82}
+  m_LocalScale: {x: 1, y: 0.90909094, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8073560336663245471}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8545434671162997788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955599160590746587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec9dcd4927b126479ea8e4abd143bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: 0
+  carSpeed: 12
+  carPref: {fileID: 1091931728508119353, guid: acca8e24166fbe24c906b8b63e3aa810, type: 3}
+  cars: []
+  goesDown: 1
 --- !u!1001 &62349148146311195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -745,7 +845,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c07146a097dc2314b8110e1f099c27a3,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c07146a097dc2314b8110e1f099c27a3,
         type: 3}
@@ -2433,7 +2533,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -924.3576
+      value: -1848.7152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
@@ -2448,7 +2548,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.52
+      value: 6.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
@@ -2498,7 +2598,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ecc625749236fc54e8c6e702e72cca4d,
         type: 3}

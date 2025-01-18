@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 
 namespace WalterWalk
 {
+	
+	public enum Orientation
+	{
+		Horizontal,
+		Vertical
+	}
+	
     public class PathFollower : MonoBehaviour
 	{
 		public float Speed;
@@ -12,6 +19,8 @@ namespace WalterWalk
 		private PathRetriever path;
 		public Vector3 currentDestination = Vector3.zero;
 		private Rigidbody rigid;
+		
+		public Orientation orientation = Orientation.Vertical;
 
 		async void Awake()
 		{
@@ -29,10 +38,22 @@ namespace WalterWalk
         {
 			if (path != null)
 			{
-				if (Vector3.Distance(transform.position , currentDestination) <= 0.5f)
+				if (Vector3.Distance(transform.position , currentDestination) <= 0.1f)
 				{
                     currentDestination = path.PopPoint(); /* Get next destination */
 					currentDestination.y = transform.position.y; // Lock y
+					
+					if(Mathf.Abs(currentDestination.x - transform.position.x) > 5)
+					{
+						orientation = Orientation.Horizontal;
+
+					}
+					else
+					{
+						orientation = Orientation.Vertical;
+					}
+					PlayerManager.instance.playerOrientation = orientation;
+					
                 }
 				Vector3 direction = (currentDestination - transform.position).normalized;
 				rigid.velocity = direction * Speed * Time.deltaTime;

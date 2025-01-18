@@ -43,8 +43,8 @@ public class WalkerCreator : MonoBehaviour
     [Tooltip("Increase for less turns, decrease for more")]
     public float turnSparcity = 200f;
 
-    private int tilesSinceRoad = 0;
-    private int tilesSinceTurn = 0;
+	public int tilesSinceRoad = 0;
+    public int tilesSinceTurn = 0;
 
     private Grid[,] gridHandler;
     private List<WalkerObject> Walkers;
@@ -125,7 +125,7 @@ public class WalkerCreator : MonoBehaviour
 
 
                     RuleTile tile = FloorVertical;
-	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceRoad > 148)
+	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceTurn > 200)
                     {
                         tilesSinceRoad = 0;
                         tilesSinceTurn = 0;
@@ -168,7 +168,7 @@ public class WalkerCreator : MonoBehaviour
                 //Walker Methods
                 if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN)
                 {
-                    if (ChanceToRedirect())
+                    if (ChanceToRedirect() || tilesSinceTurn > 250)
                     {
                         AddRoadToQueue();
                         tilesSinceTurn = 0; tilesSinceRoad = 0;

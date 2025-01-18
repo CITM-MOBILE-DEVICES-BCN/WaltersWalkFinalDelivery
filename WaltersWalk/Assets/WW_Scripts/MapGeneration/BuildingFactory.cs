@@ -96,7 +96,7 @@ namespace WalterWalk
 			{
 				if(fittableBuildings.Count > 1)
 				{
-					print("multiple possible buildings");
+					//print("multiple possible buildings");
 				}
 
 				var building = Instantiate(fittableBuildings[ UnityEngine.Random.Range(0,fittableBuildings.Count )]);
@@ -107,7 +107,7 @@ namespace WalterWalk
 			}
 			else
 			{
-				print("no buildings ot spawn");
+				//print("no buildings ot spawn");
 			}
 			
 		}
