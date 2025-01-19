@@ -13,13 +13,26 @@ namespace PhoneMinigames
         void Start()
         {
             memeWeightCalculator = new WeightedRandomSelector(minigamePrefabs.Length);
-            GetRandomMinigame();
         }
 
         public void GetRandomMinigame()
         {
             int index = memeWeightCalculator.GetNextWeightedRandom();
             Instantiate(minigamePrefabs[index],gameObject.transform);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (gameObject.transform.childCount > 0)
+                {
+                    Destroy(gameObject.transform.GetChild(0).gameObject);
+                }
+
+
+                GetRandomMinigame();
+            }
         }
 
     }

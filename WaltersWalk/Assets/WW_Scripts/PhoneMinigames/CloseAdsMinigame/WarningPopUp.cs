@@ -14,6 +14,7 @@ namespace PhoneMinigames
             transform.localPosition = new Vector3(0, 0, 0);
             transform.localScale = new Vector3(0, 0, 0);
             transform.DOScale(new Vector3(1, 1, 1), appearTime);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public void Close()
