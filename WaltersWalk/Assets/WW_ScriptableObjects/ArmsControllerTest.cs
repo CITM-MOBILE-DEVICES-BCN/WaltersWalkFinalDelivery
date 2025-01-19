@@ -20,13 +20,13 @@ public class ArmsControllerTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            animator.SetBool("isPhoneActive", true);
+            animator.SetBool("IsPhoneActive", true);
             animator.SetTrigger("PhoneOut");
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            animator.SetBool("isPhoneActive", false);
+            animator.SetBool("IsPhoneActive", false);
             animator.SetTrigger("StorePhone");
         }
 
