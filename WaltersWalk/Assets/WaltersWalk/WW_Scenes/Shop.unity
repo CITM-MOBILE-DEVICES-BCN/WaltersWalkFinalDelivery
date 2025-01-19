@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 260239327}
   - component: {fileID: 260239326}
   m_Layer: 5
-  m_Name: ItemPriceText
+  m_Name: CigarettePriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: LSD
   price: 50
-  panelXOffset: -0.15
+  panelXOffset: -0.3
   panelYOffset: -1.8
   panelZOffset: -0.8
 --- !u!114 &348542108
@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 1252321595}
   - component: {fileID: 1252321594}
   m_Layer: 5
-  m_Name: BuyButton
+  m_Name: CigaretteBuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 1671319296}
   - component: {fileID: 1671319295}
   m_Layer: 5
-  m_Name: ItemNameText
+  m_Name: CigaretteItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
