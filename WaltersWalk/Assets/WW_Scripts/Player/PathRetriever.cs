@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace WalterWalk
@@ -13,6 +14,8 @@ namespace WalterWalk
 
 		public GameObject turnSign;
 
+		Vector3 lastPoint;
+
 		private int numPaths = 0;
 
 		private void Awake()
@@ -21,12 +24,35 @@ namespace WalterWalk
 	        walkerCreator.OnTurnPlaced += AddPathPoint;
         }
 
-
-		private void AddPathPoint(Vector3 point)
+        private void Start()
         {
-	        var sign = Instantiate(turnSign);
-	        sign.transform.position = new Vector3(point.x + .5f, 0, point.y + .5f);
-	        breadcrumbs.Enqueue(sign.transform.position);
+			lastPoint = PlayerManager.instance.player.transform.position;
+        }
+
+        private void AddPathPoint(Vector3 point)
+        {
+	        //var sign = Instantiate(turnSign);
+	        //sign.transform.position = new Vector3(point.x + .5f, 0, point.y + .5f);
+	        breadcrumbs.Enqueue(new Vector3(point.x + .5f, 0, point.y + .5f));
+
+
+   //         Transform child = sign.transform.Find("GameObject");
+			//// sign offset
+
+
+			//if (Mathf.Abs(lastPoint.x - point.x) > 10)
+			//{
+			//	// left turn
+			//	if (lastPoint.x > point.x)
+			//	{
+			//		if (child != null)
+			//		{
+			//			child.eulerAngles = new Vector3(0, 90, 0);
+			//		}
+			//	}
+			//}
+	
+
         }
         
 		public Vector3 PopPoint()

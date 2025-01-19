@@ -15,6 +15,8 @@ public class WalkerCreator : MonoBehaviour
         EMPTY
     }
 
+    public GameObject turnSign;
+
     public int maxTilesInstanciated;
     public int TileCount = default;
 
@@ -92,17 +94,34 @@ public class WalkerCreator : MonoBehaviour
     {
         if (currentDir != Vector2.down)
         {
+            if (currentDir == Vector2.left)
+            {
+                GameObject sign = Instantiate(turnSign, Walkers[0].GlobalPosition(), Quaternion.identity, this.transform);
+                sign.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else
+            {
+                GameObject sign = Instantiate(turnSign, Walkers[0].GlobalPosition(), Quaternion.identity, this.transform);
+                sign.transform.eulerAngles = new Vector3(0, -90, 0);
+            }
+
             return Vector2.down;
         }
         else
         {
             int id = UnityEngine.Random.Range(0, 2);
-
+            GameObject sign;
 
                 switch (id)
                 {
-                    case 0: return Vector2.left;
-                    case 1: return Vector2.right;
+                    case 0:
+                        sign = Instantiate(turnSign, Walkers[0].GlobalPosition(), Quaternion.identity, this.transform);
+                        
+                        return Vector2.left;
+                    case 1:
+                        sign = Instantiate(turnSign, Walkers[0].GlobalPosition(), Quaternion.identity, this.transform);
+                        sign.transform.eulerAngles = new Vector3(0, 90, 0);
+                        return Vector2.right;
                 }
         }
 
