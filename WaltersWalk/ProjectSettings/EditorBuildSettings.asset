@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/WW_Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/WW_Scenes/TestMap/WW_RandomWalker.unity
+    path: Assets/WaltersWalk/WW_Scenes/TestMap/WW_RandomWalker.unity
     guid: 359058f2237452e49888c41b750fae27
   m_configObjects: {}
