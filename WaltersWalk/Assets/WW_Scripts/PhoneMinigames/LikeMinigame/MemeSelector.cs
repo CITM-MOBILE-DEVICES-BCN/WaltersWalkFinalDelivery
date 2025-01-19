@@ -30,7 +30,7 @@ namespace PhoneMinigames
             newMeme = Instantiate(memesPrefab[index],mask.transform);
             newMeme.transform.localPosition = new Vector3(-100,0,0);
             newMeme.GetComponent<MemeLogic>().memeSelector = this;
-            newMeme.transform.DOMoveX(0, 0.5f);
+            newMeme.transform.DOLocalMove(new Vector3(0,0,0), 0.5f);
         }
     }
 }

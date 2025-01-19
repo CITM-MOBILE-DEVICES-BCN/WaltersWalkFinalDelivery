@@ -29,14 +29,14 @@ namespace PhoneMinigames
                 Debug.Log("Corect");
                 memeSelector.GetRandomMeme();
                 memeImage.color = Color.green;
-                gameObject.transform.DOMoveX(1, 0.5f).OnComplete(() => Destroy(gameObject)); 
+                gameObject.transform.DOLocalMove(new Vector3(100, 0, 0), 0.5f).OnComplete(() => Destroy(gameObject)); 
             }
             else
             {
                 Debug.Log("Incorrect");
                 memeSelector.GetRandomMeme();
                 memeImage.color = Color.red;
-                gameObject.transform.DOMoveX(1, 0.5f).OnComplete(() => Destroy(gameObject));
+                gameObject.transform.DOLocalMove(new Vector3(100, 0, 0), 0.5f).OnComplete(() => Destroy(gameObject));
             }
         }
        
