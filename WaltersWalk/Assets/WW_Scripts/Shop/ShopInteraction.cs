@@ -14,12 +14,12 @@ namespace WalterWalk
 
         private GameDataManager gameDataManager;
         private Transform hoveredItem;
-        private Vector3 originalScale; 
+        private Vector3 originalScale;
 
         private void Start()
         {
             gameDataManager = new GameDataManager();
-            itemPanel.SetActive(false); 
+            itemPanel.SetActive(false);
         }
 
         private void Update()
@@ -46,7 +46,7 @@ namespace WalterWalk
                     originalScale = hoveredItem.localScale;
 
                     hoveredItem.DOScale(originalScale * 1.2f, 0.2f);
-                    ShowItemPanel(itemInfo);
+                    ShowItemPanel(itemInfo, hit.transform.position);
                 }
                 else
                 {
@@ -59,11 +59,18 @@ namespace WalterWalk
             }
         }
 
-        private void ShowItemPanel(ItemInfo itemInfo)
+        private void ShowItemPanel(ItemInfo itemInfo, Vector3 itemPosition)
         {
             itemPanel.SetActive(true);
             itemNameText.text = $"x1 {itemInfo.itemName}";
             itemPriceText.text = $"${itemInfo.price}";
+
+            // Ajustar la posición del panel en el espacio del mundo usando los offsets del item
+            Vector3 panelPosition = itemPosition;
+            panelPosition.x += itemInfo.panelXOffset;
+            panelPosition.y += itemInfo.panelYOffset;
+            panelPosition.z += itemInfo.panelZOffset;
+            itemPanel.transform.position = panelPosition;
         }
 
         private void ResetHoveredItem()
