@@ -15,11 +15,13 @@ namespace WalterWalk
         private GameDataManager gameDataManager;
         private Transform hoveredItem;
         private Vector3 originalScale;
+        private CanvasManager canvasManager; 
 
         private void Start()
         {
             gameDataManager = new GameDataManager();
             itemPanel.SetActive(false);
+            canvasManager = FindObjectOfType<CanvasManager>(); 
         }
 
         private void Update()
@@ -29,6 +31,12 @@ namespace WalterWalk
 
         private void HandleItemHover()
         {
+            if (canvasManager != null && canvasManager.IsCanvasActive("SettingsCanvas")) 
+            {
+                ResetHoveredItem();
+                return;
+            }
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -65,7 +73,6 @@ namespace WalterWalk
             itemNameText.text = $"x1 {itemInfo.itemName}";
             itemPriceText.text = $"${itemInfo.price}";
 
-            // Ajustar la posición del panel en el espacio del mundo usando los offsets del item
             Vector3 panelPosition = itemPosition;
             panelPosition.x += itemInfo.panelXOffset;
             panelPosition.y += itemInfo.panelYOffset;
