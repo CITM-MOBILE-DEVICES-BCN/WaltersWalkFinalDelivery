@@ -358,12 +358,12 @@ public class WalkerCreator : MonoBehaviour
 	
 	void OnApplicationQuit()
 	{
-		Debug.Log("Exiting Play Mode: Performing cleanup.");
+		//Debug.Log("Exiting Play Mode: Performing cleanup.");
 		
-		buildingsToDestroy.Clear();
-		currentRoad.Clear();
-		tilesToDestroy.Clear();
-		currentRoadBuildings.Clear();
+		//buildingsToDestroy.Clear();
+		//currentRoad.Clear();
+		//tilesToDestroy.Clear();
+		//currentRoadBuildings.Clear();
 
 	}
 }
