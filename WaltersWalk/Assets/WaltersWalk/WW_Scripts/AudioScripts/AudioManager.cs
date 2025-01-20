@@ -17,7 +17,10 @@ public enum SoundType
     CITY,
     CITY2,
     MOMCALL,
-    CARCRASH
+    MOMCALL2,
+    CARCRASH,
+    FENTANYLYAPPER,
+    ENDCALL
 }
 
 
@@ -87,6 +90,7 @@ public class AudioManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             AudioManager.PlaySound(SoundType.MOMCALL);
+            StartCoroutine(PlayFentanylYapperAndCallBeforeEnd());
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -158,6 +162,19 @@ public class AudioManager : MonoBehaviour
         {   
             envAudioSource1.mute = !envAudioSource1.mute;
             envAudioSource2.mute = !envAudioSource2.mute;
+        }
+    }
+
+    private IEnumerator PlayFentanylYapperAndCallBeforeEnd()
+    {
+        AudioClip momCallClip = GetAudioClip(SoundType.MOMCALL);
+        AudioClip fentanylYapperClip = GetAudioClip(SoundType.FENTANYLYAPPER);
+        if (momCallClip != null && fentanylYapperClip != null)
+        {
+            yield return new WaitForSeconds(momCallClip.length - 1.8f);
+            PlaySound(SoundType.FENTANYLYAPPER);
+            yield return new WaitForSeconds(fentanylYapperClip.length);
+            PlaySound(SoundType.ENDCALL);
         }
     }
 }
