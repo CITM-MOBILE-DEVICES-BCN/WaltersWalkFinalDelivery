@@ -62,6 +62,8 @@ public class WalkerCreator : MonoBehaviour
 	
 	public WalkerObject walkerPrefab;
 
+    int definitiveTurn = -1;
+
     void OnEnable()
     {
         InitializeGrid();
@@ -144,10 +146,10 @@ public class WalkerCreator : MonoBehaviour
 
 
                     RuleTile tile = FloorVertical;
-	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity) || tilesSinceTurn > 200)
+	                if ((tilesSinceRoad > MINIMUM_TILES_FOR_ROAD && UnityEngine.Random.value <= tilesSinceRoad / roadSparcity && tilesSinceTurn > 40) )
                     {
                         tilesSinceRoad = 0;
-                        tilesSinceTurn = 0;
+
 
                         if (curWalker._direction != Vector2.down)
                         {
