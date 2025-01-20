@@ -14,7 +14,10 @@ public enum SoundType
     PILLS,
     SCRATCHING,
     SMOKING,
-    CITY
+    CITY,
+    CITY2,
+    MOMCALL,
+    CARCRASH
 }
 
 [RequireComponent(typeof(AudioSource))]
@@ -22,10 +25,12 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] public AudioClip[] soundList;
     [SerializeField] private Slider effectsVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider envVolumeSlider;
     public static AudioManager instance;
+
     public AudioSource effectsAudioSource;
-    public AudioSource musicAudioSource;
+    public AudioSource envAudioSource1;
+    public AudioSource envAudioSource2;
 
     private void Awake()
     {
@@ -48,12 +53,13 @@ public class AudioManager : MonoBehaviour
             effectsVolumeSlider.value = effectsAudioSource.volume;
         }
 
-        if (musicVolumeSlider != null)
+        if (envVolumeSlider != null)
         {
-            musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
-            musicVolumeSlider.value = musicAudioSource.volume;
+            envVolumeSlider.onValueChanged.AddListener(SetEnvVolume);
+            envVolumeSlider.value = envAudioSource1.volume;
         }
-        AudioManager.PlayMusic(soundList[(int)SoundType.CITY], true);
+
+        PlayEnv(soundList[(int)SoundType.CITY], soundList[(int)SoundType.CITY2], true);
     }
 
     private void Update()
@@ -72,6 +78,30 @@ public class AudioManager : MonoBehaviour
         {
             AudioManager.PlaySound(SoundType.SMOKING);
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            AudioManager.PlaySound(SoundType.CARCRASH);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AudioManager.PlaySound(SoundType.MOMCALL);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleMute();
+        }
+    }
+
+    public AudioClip GetAudioClip(SoundType sound)
+    {
+        if (soundList != null && (int)sound < soundList.Length)
+        {
+            return soundList[(int)sound];
+        }
+        return null;
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
@@ -86,22 +116,28 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                UnityEngine.Debug.LogWarning("Clip de audio no encontrado para: " + sound.ToString());
+                UnityEngine.Debug.Log("Clip de audio no encontrado para: " + sound.ToString());
             }
         }
         else
         {
-            UnityEngine.Debug.LogWarning("AudioManager o AudioSource no está configurado correctamente.");
+            UnityEngine.Debug.Log("AudioManager o AudioSource no está configurado correctamente.");
         }
     }
 
-    public static void PlayMusic(AudioClip musicClip, bool loop = true)
+    public static void PlayEnv(AudioClip envClip1, AudioClip envClip2, bool loop = true)
     {
-        if (instance != null && instance.musicAudioSource != null && musicClip != null)
+        if (instance != null && instance.envAudioSource1 != null && instance.envAudioSource2 != null && envClip1 != null && envClip2 != null)
         {
-            instance.musicAudioSource.clip = musicClip;
-            instance.musicAudioSource.loop = loop;
-            instance.musicAudioSource.Play();
+            instance.envAudioSource1.clip = envClip1;
+            instance.envAudioSource1.loop = loop;
+            instance.envAudioSource1.Play();
+            instance.envAudioSource1.mute = false;
+
+            instance.envAudioSource2.clip = envClip2;
+            instance.envAudioSource2.loop = loop;
+            instance.envAudioSource2.Play();
+            instance.envAudioSource2.mute = true;
         }
     }
 
@@ -110,8 +146,18 @@ public class AudioManager : MonoBehaviour
         effectsAudioSource.volume = volume;
     }
 
-    public void SetMusicVolume(float volume)
+    public void SetEnvVolume(float volume)
     {
-        musicAudioSource.volume = volume;
+        envAudioSource1.volume = volume;
+        envAudioSource2.volume = volume;
+    }
+
+    private void ToggleMute()
+    {
+        if (envAudioSource1 != null && envAudioSource2 != null)
+        {   
+            envAudioSource1.mute = !envAudioSource1.mute;
+            envAudioSource2.mute = !envAudioSource2.mute;
+        }
     }
 }

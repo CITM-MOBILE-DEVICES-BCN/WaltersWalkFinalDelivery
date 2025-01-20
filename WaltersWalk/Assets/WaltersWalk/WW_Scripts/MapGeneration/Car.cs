@@ -27,12 +27,16 @@ namespace WalterWalk
 	    private GameObject carSpawned = null;
 	    public bool goesDown = false;
 
-        public bool hasPlayedClaxon = false; 
+        public bool hasPlayedClaxon = false;
+
+        private AudioSource audioSource;
 
 
         private void Awake()
         {
             collider = GetComponent<Collider>();
+            audioSource = gameObject.AddComponent<AudioSource>(); 
+            audioSource.spatialBlend = 1.0f;
         }
         public void Start()
         {
@@ -122,8 +126,13 @@ namespace WalterWalk
 
         public void PlayClaxon()
         {
-            AudioManager.PlaySound(claxonType);
-            UnityEngine.Debug.Log("Sonando claxon: " + claxonType.ToString());
+            AudioClip clip = AudioManager.instance.GetAudioClip(claxonType);
+            if (clip != null)
+            {
+                audioSource.clip = clip;
+                audioSource.Play();
+                UnityEngine.Debug.Log("Sonando claxon: " + claxonType.ToString());
+            }
         }
     }
 }
