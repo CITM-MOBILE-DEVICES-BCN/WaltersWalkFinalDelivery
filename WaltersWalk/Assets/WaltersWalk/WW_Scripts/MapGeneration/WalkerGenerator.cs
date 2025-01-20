@@ -62,7 +62,7 @@ public class WalkerCreator : MonoBehaviour
 	
 	public WalkerObject walkerPrefab;
 
-    int definitiveTurn = -1;
+    int definitiveTurn = -2;
 
     void OnEnable()
     {
@@ -187,15 +187,28 @@ public class WalkerCreator : MonoBehaviour
                 if (end) { break; }
 
                 //Walker Methods
-                if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN)
+                if (tilesSinceTurn >= MINIMUM_TILES_FOR_TURN )
                 {
-                    if (ChanceToRedirect() || tilesSinceTurn > 250)
+                    if (definitiveTurn != -1) ChanceToRedirect();
+                    if (  tilesSinceTurn > 250)
                     {
                         AddRoadToQueue();
                         tilesSinceTurn = 0; tilesSinceRoad = 0;
                         if (OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
                     }
                 }
+
+                if (definitiveTurn > -1) { definitiveTurn--; }
+                if (definitiveTurn == 0)
+                {
+                    definitiveTurn = -2;
+                    for (int i = 0; i < Walkers.Count; i++) { Redirect(Walkers[i]); }
+
+                    AddRoadToQueue();
+                    tilesSinceTurn = 0; tilesSinceRoad = 0;
+                    if (OnTurnPlaced != null) OnTurnPlaced.Invoke(Walkers[0]._position);
+                }
+
                 UpdatePosition();
 
                 if (hasCreatedFloor)
@@ -235,9 +248,13 @@ public class WalkerCreator : MonoBehaviour
         {
 	        if (UnityEngine.Random.value < tilesSinceTurn/ turnSparcity )
             {
-                Redirect(Walkers[i]);
                 redirect = true;
             }
+        }
+
+        if (redirect)
+        {
+            definitiveTurn = 30;
         }
 
         return redirect;
