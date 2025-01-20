@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace NavigationSystem 
+namespace NavigationSystem2
 { 
     public class Navigation
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NavigationSystem
+namespace NavigationSystem2
 {
     public class PopUpSpawn : MonoBehaviour
     {
