@@ -54,12 +54,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ade9100ae10deb841857d64617fe143d, type: 3}
   - {fileID: 8300000, guid: c09986ed9b0bb9445bba4754711e420c, type: 3}
   - {fileID: 8300000, guid: 5ea523350e8b28440a82fb5c4828c528, type: 3}
+  - {fileID: 8300000, guid: 629e5132d0a87f942996d952b5197d44, type: 3}
   - {fileID: 8300000, guid: 6d3383dd2c1eba141bb484836557a2c5, type: 3}
   - {fileID: 8300000, guid: e3bfd21aae66d9b46b3226411be32cc5, type: 3}
   effectsVolumeSlider: {fileID: 0}
-  musicVolumeSlider: {fileID: 0}
+  envVolumeSlider: {fileID: 0}
   effectsAudioSource: {fileID: 8844915977650683393}
-  musicAudioSource: {fileID: 863114176112345602}
+  envAudioSource1: {fileID: 0}
+  envAudioSource2: {fileID: 0}
 --- !u!82 &8844915977650683393
 AudioSource:
   m_ObjectHideFlags: 0

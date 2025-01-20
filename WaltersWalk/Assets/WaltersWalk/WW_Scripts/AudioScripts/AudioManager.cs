@@ -20,7 +20,7 @@ public enum SoundType
     CARCRASH
 }
 
-[RequireComponent(typeof(AudioSource))]
+
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] public AudioClip[] soundList;
