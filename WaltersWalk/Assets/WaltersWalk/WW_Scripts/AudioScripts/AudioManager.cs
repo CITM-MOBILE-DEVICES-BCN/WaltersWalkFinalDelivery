@@ -4,21 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Net;
+using System.Diagnostics;
 
 public enum SoundType
 {
+    CLAXON1,
+    CLAXON2,
+    CLAXON3,
     PILLS,
     SCRATCHING,
-    SMOKING
+    SMOKING,
+    CITY
 }
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] soundList;
+    [SerializeField] public AudioClip[] soundList;
     [SerializeField] private Slider effectsVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
-    private static AudioManager instance;
+    public static AudioManager instance;
     public AudioSource effectsAudioSource;
     public AudioSource musicAudioSource;
 
@@ -48,6 +53,7 @@ public class AudioManager : MonoBehaviour
             musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
             musicVolumeSlider.value = musicAudioSource.volume;
         }
+        AudioManager.PlayMusic(soundList[(int)SoundType.CITY], true);
     }
 
     private void Update()
@@ -76,7 +82,16 @@ public class AudioManager : MonoBehaviour
             if (clip != null)
             {
                 instance.effectsAudioSource.PlayOneShot(clip, volume * instance.effectsAudioSource.volume);
+                UnityEngine.Debug.Log("Reproduciendo sonido: " + sound.ToString() + " con clip: " + clip.name);
             }
+            else
+            {
+                UnityEngine.Debug.LogWarning("Clip de audio no encontrado para: " + sound.ToString());
+            }
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("AudioManager o AudioSource no está configurado correctamente.");
         }
     }
 

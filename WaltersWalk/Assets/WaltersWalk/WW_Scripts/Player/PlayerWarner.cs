@@ -48,8 +48,25 @@ namespace WalterWalk
             }
 
             warningLvl = 5f / (minimum);
-            print("warining level " + warningLvl);
+          //  print("warining level " + warningLvl);
             img.color = new Color(img.color.r, img.color.g, img.color.b, warningLvl);
+
+            if (warningLvl > 0.7f)
+            {
+                Car car = worrysomeCars[0].GetComponent<Car>();
+                if (!car.hasPlayedClaxon)
+                {
+                    car.PlayClaxon();
+                    car.hasPlayedClaxon = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < worrysomeCars.Count; ++i)
+                {
+                    worrysomeCars[i].GetComponent<Car>().hasPlayedClaxon = false;
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
