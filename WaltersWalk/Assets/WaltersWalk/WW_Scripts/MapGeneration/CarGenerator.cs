@@ -30,6 +30,20 @@ namespace WalterWalk
                 spawned.speed = carSpeed;
 	            spawned.dir = dir;
 	            spawned.goesDown = goesDown;
+
+                switch (i % 3)
+                {
+                    case 0:
+                        spawned.claxonType = SoundType.CLAXON1;
+                        break;
+                    case 1:
+                        spawned.claxonType = SoundType.CLAXON2;
+                        break;
+                    case 2:
+                        spawned.claxonType = SoundType.CLAXON3;
+                        break;
+                }
+
                 cars.Add(spawned);
             }
 

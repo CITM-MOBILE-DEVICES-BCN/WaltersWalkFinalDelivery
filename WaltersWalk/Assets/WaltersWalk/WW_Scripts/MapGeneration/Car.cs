@@ -1,6 +1,8 @@
 ﻿using Codice.Client.BaseCommands;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace WalterWalk
@@ -19,10 +21,14 @@ namespace WalterWalk
         public Vector3 direction;
         private float timeAlive = 6f;
         public float speed = 0f;
+        public SoundType claxonType;
 
         private Collider collider;
 	    private GameObject carSpawned = null;
 	    public bool goesDown = false;
+
+        public bool hasPlayedClaxon = false; 
+
 
         private void Awake()
         {
@@ -30,13 +36,13 @@ namespace WalterWalk
         }
         public void Start()
         {
-          
-            
-	        GameObject[] cars = Resources.LoadAll<GameObject>("Cars");
+           
+
+            GameObject[] cars = Resources.LoadAll<GameObject>("Cars");
             collider.enabled = true;
             if (carSpawned == null)
             {
-                carSpawned = Instantiate(cars[Random.Range(0, cars.Length - 1)], this.transform);
+                carSpawned = Instantiate(cars[UnityEngine.Random.Range(0, cars.Length - 1)], this.transform);
                 carSpawned.transform.localPosition = new Vector3(0, -1, 0);
             }
 	        if (!goesDown){
@@ -68,7 +74,7 @@ namespace WalterWalk
 	        
 	        float prevSpeed = speed;
 	        
-	        speed = ( Random.Range(speed- 3f, speed+3f) + Random.Range(speed - 3f, speed + 3f) )* .5f;
+	        speed = ( UnityEngine.Random.Range(speed- 3f, speed+3f) + UnityEngine.Random.Range(speed - 3f, speed + 3f) )* .5f;
 	        
         }
 
@@ -111,6 +117,13 @@ namespace WalterWalk
         private void OnDestroy()
         {
             PlayerManager.instance.warner.RemoveWarning(this.gameObject);
+        }
+
+
+        public void PlayClaxon()
+        {
+            AudioManager.PlaySound(claxonType);
+            UnityEngine.Debug.Log("Sonando claxon: " + claxonType.ToString());
         }
     }
 }
