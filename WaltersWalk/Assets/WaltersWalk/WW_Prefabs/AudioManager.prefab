@@ -441,7 +441,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ea523350e8b28440a82fb5c4828c528, type: 3}
   - {fileID: 8300000, guid: 629e5132d0a87f942996d952b5197d44, type: 3}
   - {fileID: 8300000, guid: 6d3383dd2c1eba141bb484836557a2c5, type: 3}
+  - {fileID: 8300000, guid: 504b0f3254cd6a940901da3be4e9372f, type: 3}
   - {fileID: 8300000, guid: e3bfd21aae66d9b46b3226411be32cc5, type: 3}
+  - {fileID: 8300000, guid: e04546511573e714b9edd3b7aa34296b, type: 3}
+  - {fileID: 8300000, guid: eb58393164ee98d4f9adc458996b8f96, type: 3}
   effectsVolumeSlider: {fileID: 0}
   envVolumeSlider: {fileID: 0}
   effectsAudioSource: {fileID: 4125116864565214326}
