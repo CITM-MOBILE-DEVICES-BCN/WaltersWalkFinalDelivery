@@ -61,6 +61,7 @@ public class WalkerCreator : MonoBehaviour
 	private List<GameObject> currentRoadBuildings;
 	
 	public WalkerObject walkerPrefab;
+    public WalkerFollower followerPrefab;
 
     int definitiveTurn = -2;
 
@@ -77,7 +78,11 @@ public class WalkerCreator : MonoBehaviour
         Vector3Int TileCenter = new Vector3Int( ((int)MapWidth) / 2, /*gridHandler.GetLength(1) / 2*/ ((int) MapHeight) - 1, 0);
 
 	    WalkerObject curWalker = Instantiate(walkerPrefab);
+        WalkerFollower follower = Instantiate(followerPrefab);
+        follower.ConnectToGenerator(this);
+
 	    curWalker.Init(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
+        follower.transform.position = curWalker.transform.position; 
 	    
 	    //WalkerObject curWalker = new WalkerObject(new Vector2(TileCenter.x, TileCenter.y), Vector2.down, 0.5f);
        // gridHandler[TileCenter.x, TileCenter.y] = Grid.FLOOR;
