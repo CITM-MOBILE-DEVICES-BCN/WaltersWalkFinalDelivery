@@ -29,6 +29,8 @@ namespace WalterWalk
 
 		public List<DestroyableMapTile> tilesToDestroy;
 
+		List<int> bannedIndexes = new List<int>();
+
 		private void Awake()
 		{
 			tileMap = GetComponentInChildren<Tilemap>();
@@ -40,6 +42,9 @@ namespace WalterWalk
 				BuildingCollection[i].size = Vector3.Scale( BuildingCollection[i].building.GetComponentInChildren<MeshFilter>().sharedMesh.bounds.size, BuildingCollection[i].building.transform.localScale);
 
             }
+
+
+			int unique_counter = BuildingCollection.Count ;
 
         }
 		private async void ChanceToBuild(Vector3 position, Vector2 direction, Vector3Int tilePosition)
@@ -76,18 +81,22 @@ namespace WalterWalk
 			}
 		}
 
+
 		private void SpawnBuilding(Vector3 position, TileBase parent, float yRotation = 0)
 		{
+			if (bannedIndexes.Count == BuildingCollection.Count) { bannedIndexes.Clear(); }
+
 			BuildingPlacer placer = new BuildingPlacer(position);
 			Vector3 size = placer.CreateSize();
-			List<GameObject> fittableBuildings = new List<GameObject>();
+			List<BuildingInfo> fittableBuildings = new List<BuildingInfo>();
 
 
 			for (int i = 0; i < BuildingCollection.Count; ++i)
 			{
-				if (DoesBuildingFit(BuildingCollection[i].size, size, yRotation))
+				// if the building fits                  AND                     hasn't been recently placed
+				if (DoesBuildingFit(BuildingCollection[i].size, size, yRotation) && bannedIndexes.Contains(i) == false)
 				{
-					fittableBuildings.Add(BuildingCollection[i].building);
+					fittableBuildings.Add(BuildingCollection[i]);
 
 				}
 			}
@@ -98,8 +107,11 @@ namespace WalterWalk
 				{
 					//print("multiple possible buildings");
 				}
+				int index = UnityEngine.Random.Range(0, fittableBuildings.Count);
 
-				var building = Instantiate(fittableBuildings[ UnityEngine.Random.Range(0,fittableBuildings.Count )]);
+				bannedIndexes.Add(BuildingCollection.IndexOf(fittableBuildings[index]));
+
+                var building = Instantiate(fittableBuildings[ UnityEngine.Random.Range(0,fittableBuildings.Count )].building);
 				building.transform.position = position;
 				building.transform.eulerAngles = new  Vector3(0, yRotation, 0);
 				GameManager.Instance.mapCreator.AddDestroyableBuilding(building);
