@@ -22,6 +22,8 @@ namespace WalterWalk
 		
 		public Orientation orientation = Orientation.Vertical;
 
+		bool stoped = false;
+
 		async void Awake()
 		{
 			Speed *= 1000f;
@@ -36,6 +38,23 @@ namespace WalterWalk
         // Update is called once per frame
         void Update()
         {
+
+			if (Input.GetKeyDown(KeyCode.Space) == true && ! stoped)
+			{
+				stoped = true;
+			}
+			else if (Input.GetKeyDown(KeyCode.Space) == true && stoped)
+			{
+				stoped = false;
+			}
+			
+			if (stoped)
+			{
+				rigid.velocity = Vector3.Lerp(rigid.velocity, Vector3.zero, .1f);
+
+                return;
+			}
+
 			if (path != null)
 			{
 				if (Vector3.Distance(transform.position , currentDestination) <= 0.1f)
