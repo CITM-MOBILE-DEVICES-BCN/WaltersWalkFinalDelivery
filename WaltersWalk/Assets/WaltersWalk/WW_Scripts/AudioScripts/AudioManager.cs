@@ -16,11 +16,20 @@ public enum SoundType
     SMOKING,
     CITY,
     CITY2,
-    MOMCALL,
-    MOMCALL2,
     CARCRASH,
     FENTANYLYAPPER,
-    ENDCALL
+    ENDCALL,
+    DIXONMAYASCALL,
+    DIXONMAYASTALKING,
+    ERICEAGLECALL,
+    ERICEAGLETALKING,
+    JOHNPORKCALL,
+    JOHNPORKTALKING,
+    MAOZEDONGCALL,
+    MAOZEDONGTALKING,
+    MESSICALL,
+    MESSITALKING1,
+    MEESSITALKING2,
 }
 
 
@@ -85,12 +94,6 @@ public class AudioManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             AudioManager.PlaySound(SoundType.CARCRASH);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            AudioManager.PlaySound(SoundType.MOMCALL);
-            StartCoroutine(PlayFentanylYapperAndCallBeforeEnd());
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -165,16 +168,4 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayFentanylYapperAndCallBeforeEnd()
-    {
-        AudioClip momCallClip = GetAudioClip(SoundType.MOMCALL);
-        AudioClip fentanylYapperClip = GetAudioClip(SoundType.FENTANYLYAPPER);
-        if (momCallClip != null && fentanylYapperClip != null)
-        {
-            yield return new WaitForSeconds(momCallClip.length - 1.8f);
-            PlaySound(SoundType.FENTANYLYAPPER);
-            yield return new WaitForSeconds(fentanylYapperClip.length);
-            PlaySound(SoundType.ENDCALL);
-        }
-    }
 }

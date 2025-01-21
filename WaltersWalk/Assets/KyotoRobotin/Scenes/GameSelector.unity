@@ -546,7 +546,7 @@ MonoBehaviour:
   button4: {fileID: 6452412632688105017}
   sceneName1: MainMenu_1
   sceneName2: RobotinMeta
-  sceneName3: 
+  sceneName3: 3.Meta
   sceneName4: 
 --- !u!4 &1918080465
 Transform:
@@ -827,7 +827,8 @@ MonoBehaviour:
   m_text: Game1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
+  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1097,7 +1098,8 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
+  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1236,7 +1238,8 @@ MonoBehaviour:
   m_text: Game4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
+  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1325,7 +1328,8 @@ MonoBehaviour:
   m_text: Game2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
+  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1596,7 +1600,8 @@ MonoBehaviour:
   m_text: Lobby
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
+  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
