@@ -10,6 +10,8 @@ namespace PhoneMinigames
         public GameObject[] minigamePrefabs;
         WeightedRandomSelector memeWeightCalculator;
 
+        GameObject currentMinigame;
+
         void Start()
         {
             memeWeightCalculator = new WeightedRandomSelector(minigamePrefabs.Length);
@@ -18,7 +20,7 @@ namespace PhoneMinigames
         public void GetRandomMinigame()
         {
             int index = memeWeightCalculator.GetNextWeightedRandom();
-            Instantiate(minigamePrefabs[index],gameObject.transform);
+            currentMinigame = Instantiate(minigamePrefabs[index],gameObject.transform);
         }
 
         private void Update()
@@ -27,7 +29,7 @@ namespace PhoneMinigames
             {
                 if (gameObject.transform.childCount > 0)
                 {
-                    Destroy(gameObject.transform.GetChild(0).gameObject);
+                    Destroy(currentMinigame);
                 }
 
 
