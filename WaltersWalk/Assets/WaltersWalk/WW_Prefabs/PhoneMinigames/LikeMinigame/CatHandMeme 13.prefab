@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 87301575410484995}
   - component: {fileID: 7805166180588938710}
   m_Layer: 5
-  m_Name: CatHandMeme
+  m_Name: CatHandMeme 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f2e0d43e42e16542915213a54db848f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7050348f11c4a846924b4533adb5828, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
