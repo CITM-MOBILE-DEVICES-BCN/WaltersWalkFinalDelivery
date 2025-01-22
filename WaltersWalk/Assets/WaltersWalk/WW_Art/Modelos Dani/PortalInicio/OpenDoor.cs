@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+namespace WalterWalk
 {
-	public Animator Puerta;
- 
-	public void StartGame()
+	public class OpenDoor : MonoBehaviour
 	{
-		Puerta.SetBool("NewGame", true);
+		public Animator Puerta;
+
+		public void StartGame()
+		{
+			Puerta.SetBool("NewGame", true);
+			if (PlayerManager.instance != null) { PlayerManager.instance.isDoorOpen = true; }
+		}
 	}
+
 }

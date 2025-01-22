@@ -10,7 +10,14 @@ namespace WalterWalk
         
 	    public Orientation playerOrientation;
         public GameObject player;
-        public PlayerWarner warner;
+	    public PlayerWarner warner;
+        
+        
+        
+	    public bool isDoorOpen = false;
+        
+        
+        
         private void Awake()
         {
             if (instance) { Destroy(this); }
