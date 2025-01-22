@@ -457,9 +457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadTilePrefab: {fileID: 4838800791051189918, guid: 5a54ced843a14f4439571097b3d93368,
     type: 3}
+  spawnReference: {fileID: 4678403511482429904}
   initialTileCount: 10
   tileLength: 10
-  playerTransform: {fileID: 5451281447944579946}
+  speed: 5
+  positionOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &3252300448448624440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,6 +619,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb16fd2434d3ce647bfe4d44429b38c2, type: 3}
+--- !u!1 &4678403511482429904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb16fd2434d3ce647bfe4d44429b38c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5488883976721697921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5451281447944579946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb16fd2434d3ce647bfe4d44429b38c2,

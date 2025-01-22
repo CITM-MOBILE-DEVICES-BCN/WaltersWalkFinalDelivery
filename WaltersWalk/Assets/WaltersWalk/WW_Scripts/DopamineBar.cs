@@ -10,6 +10,7 @@ namespace WalterWalk
         public float dopamineValue = 100;
         public float dopamineDecraseRate = 1;
         public Slider dopamineSlider;
+        public PlayerDeath playerDeath;
 
         //create a singleton
         public static DopamineBar instance;
@@ -33,6 +34,17 @@ namespace WalterWalk
         {
             dopamineValue -= Time.deltaTime * dopamineDecraseRate;
             dopamineSlider.value = dopamineValue;
+
+            if (dopamineValue >= 100)
+            {
+                dopamineValue = 100;
+            }
+
+            if (dopamineValue <= 0) 
+            {
+                // stop player
+                playerDeath.DeathByDopamine();
+            }
         }
     }
 }

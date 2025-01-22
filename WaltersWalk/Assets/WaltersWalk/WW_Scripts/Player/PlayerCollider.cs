@@ -7,12 +7,12 @@ namespace WalterWalk
 {
     public class PlayerCollider : MonoBehaviour
     {
+        public PlayerDeath playerDeath;
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "car")
             {
-
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                playerDeath.DeathByCar();
             }
         }
     }

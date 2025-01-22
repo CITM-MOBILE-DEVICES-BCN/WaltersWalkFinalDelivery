@@ -7,10 +7,13 @@ namespace PhoneMinigames
 {
     public class SubwaySurferPlayer : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider other)
+
+        private void OnCollisionEnter(Collision collision)
         {
-            if (other.CompareTag("Obstacle"))
+            Debug.Log("collision");
+            if (collision.gameObject.CompareTag("Obstacle"))
             {
+                Debug.Log("COllision with objactle");
                 DopamineBar.instance.DopaMineLevelValueModification(-10);
             }
         }
