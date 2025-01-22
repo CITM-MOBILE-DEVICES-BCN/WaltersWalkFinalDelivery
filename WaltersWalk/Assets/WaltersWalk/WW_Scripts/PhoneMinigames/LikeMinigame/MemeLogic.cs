@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using WalterWalk;
 
 namespace PhoneMinigames
 {
@@ -29,6 +30,7 @@ namespace PhoneMinigames
                 Debug.Log("Corect");
                 memeSelector.GetRandomMeme();
                 memeImage.color = Color.green;
+                DopamineBar.instance.DopaMineLevelValueModification(10);
                 gameObject.transform.DOLocalMove(new Vector3(100, 0, 0), 0.5f).OnComplete(() => Destroy(gameObject)); 
             }
             else
@@ -36,6 +38,7 @@ namespace PhoneMinigames
                 Debug.Log("Incorrect");
                 memeSelector.GetRandomMeme();
                 memeImage.color = Color.red;
+                DopamineBar.instance.DopaMineLevelValueModification(-10);
                 gameObject.transform.DOLocalMove(new Vector3(100, 0, 0), 0.5f).OnComplete(() => Destroy(gameObject));
             }
         }

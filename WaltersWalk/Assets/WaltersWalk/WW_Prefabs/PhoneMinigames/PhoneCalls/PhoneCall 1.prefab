@@ -156,7 +156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 151aa6feef1106d4c94fc1f37a2b82bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd9feda8e56c2fb48aec8b1fb3f7ddd9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callParent: {fileID: 3483094765013193244}
+  phoneCallAudio: {fileID: -2351714765724216162}
 --- !u!114 &8594532143237243412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +644,7 @@ GameObject:
   - component: {fileID: 4344522613421987360}
   - component: {fileID: 2120347581676332371}
   - component: {fileID: 5185374571810622106}
+  - component: {fileID: -2351714765724216162}
   m_Layer: 5
   m_Name: PhoneCall 1
   m_TagString: Untagged
@@ -705,7 +707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693b17a99dc6b894e87fde111998b686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  declineButton: {fileID: 3372668212187690615}
+  declineButton: {fileID: 3483094765013193244}
+  phoneCallAudio: {fileID: -2351714765724216162}
 --- !u!114 &4344522613421987360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +731,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2120347581676332371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +845,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2351714765724216162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483094765013193244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78742b0bd483f94198cc7f300c96eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 5185374571810622106}
+  acceptCallClip: {fileID: 8300000, guid: a4b52f0c85acab243b38ee9880277b1e, type: 3}
+  declineCallClip: {fileID: 8300000, guid: eb58393164ee98d4f9adc458996b8f96, type: 3}
 --- !u!1 &7813433049107873169
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,3 +953,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   declineButton: {fileID: 3372668212187690615}
+  phoneCallAudio: {fileID: 0}
