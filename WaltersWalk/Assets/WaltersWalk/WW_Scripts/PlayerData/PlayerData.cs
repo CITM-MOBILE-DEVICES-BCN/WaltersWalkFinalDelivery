@@ -26,8 +26,8 @@ namespace WalterWalk
             new Item("Cigarette", false),
             new Item("LSD", false),
             new Item("BubbleGum", false),
-            new Item("SportShoes", false),
-            new Item("AirPlaneMode", false)
+            new Item("Sport Shoes", false),
+            new Item("Air Plane Mode", false)
         };
     }
 }
