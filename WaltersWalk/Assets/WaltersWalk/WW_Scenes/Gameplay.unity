@@ -260,6 +260,12 @@ Transform:
   - {fileID: 1623860803}
   m_Father: {fileID: 1475490856}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &344933800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
+    type: 3}
+  m_PrefabInstance: {fileID: 787636303613770587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &399530974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1628,6 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.08
+  cam: {fileID: 1762644054}
   currentDestination: {x: 0, y: 0, z: 0}
   orientation: 1
 --- !u!54 &1475490859
@@ -1944,10 +1951,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1229384721964583601, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615925305372961490, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: chanceToBuild
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615925305372961490, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[0]
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615925305372961490, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[1]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615925305372961490, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[2]
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
         type: 3}
       propertyPath: m_Name
       value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514084980436019573, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[0]
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514084980436019573, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[1]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514084980436019573, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[2]
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875924959803204309, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[0]
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 7221326378014143146, guid: 643e8e80300dba844b5c9e2c1877556e,
         type: 3}
@@ -1999,10 +2051,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8269922988305293940, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: chanceToBuild
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269922988305293940, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269922988305293940, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      propertyPath: offsetFromCenter.Array.data[1]
+      value: 19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6571668789939813776}
+    - targetCorrespondingSourceObject: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6571668789939813777}
+    - targetCorrespondingSourceObject: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6571668789939813778}
+    - targetCorrespondingSourceObject: {fileID: 3737460075994430595, guid: 643e8e80300dba844b5c9e2c1877556e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6571668789939813779}
   m_SourcePrefab: {fileID: 100100000, guid: 643e8e80300dba844b5c9e2c1877556e, type: 3}
 --- !u!114 &6571668789939813769 stripped
 MonoBehaviour:
@@ -2010,12 +2093,179 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 787636303613770587}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 344933800}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9507236a42bf7024692f389bade765b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6571668789939813776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344933800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5053be7e5e5f3e34ebb73cb779fa921a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToBuild: 1
+  offsetFromCenter:
+  - 16
+  - 19
+  - 25
+  BuildingCollection:
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 2807932979197168994, guid: 14c21448bf301014484ef469653dab9e,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3336518315124758298, guid: 9e1183a43ec275e4ebd511918d3e559a,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 962300706312206739, guid: 2a22c84740d9e8b44b1a6094a17324ae,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 7788807280544472251, guid: ea8aaa0455be3d246bc31eb465dfe840,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 7634806618902837937, guid: 227f0d916a809b046b4d8941327473fa,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 6482998098741164138, guid: d9dbb2fcb62d76a46801730fe4a9f68b,
+      type: 3}
+  tilesToDestroy: []
+--- !u!114 &6571668789939813777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344933800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5053be7e5e5f3e34ebb73cb779fa921a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToBuild: 1
+  offsetFromCenter:
+  - 82
+  - 75
+  - 73
+  BuildingCollection:
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3528461940644632156, guid: 056362a98ac72ec4f897642e0d6fcb6b,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3492252758492209099, guid: 7f357c9aa23200a40a6f7c7aa294deb4,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 6126136237404006324, guid: 7b94f80046718e544b62c4385ce4cb2c,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 8593718984749594977, guid: 3d2b85fba9169b04c93e676f624d4bd2,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 6126136237404006324, guid: 7b94f80046718e544b62c4385ce4cb2c,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 1744178698335579696, guid: 3464a58523e70c54b867aca92b6130ce,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3528461940644632156, guid: 056362a98ac72ec4f897642e0d6fcb6b,
+      type: 3}
+  tilesToDestroy: []
+--- !u!114 &6571668789939813778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344933800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5053be7e5e5f3e34ebb73cb779fa921a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToBuild: 1
+  offsetFromCenter:
+  - 52
+  - 40
+  - 45
+  - 49
+  - 57
+  BuildingCollection:
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3528461940644632156, guid: 056362a98ac72ec4f897642e0d6fcb6b,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3492252758492209099, guid: 7f357c9aa23200a40a6f7c7aa294deb4,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 6126136237404006324, guid: 7b94f80046718e544b62c4385ce4cb2c,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 1744178698335579696, guid: 3464a58523e70c54b867aca92b6130ce,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 5616603958200432176, guid: 66e2710bea40cba4d99cd78c5952c866,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 7788807280544472251, guid: ea8aaa0455be3d246bc31eb465dfe840,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 500015578315623897, guid: 06b1cef13d91a8d4f9723e12c783f5c7,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 5887402528059484707, guid: 14b1abee6d339c247a6190dd509ab523,
+      type: 3}
+  tilesToDestroy: []
+--- !u!114 &6571668789939813779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344933800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5053be7e5e5f3e34ebb73cb779fa921a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToBuild: 1
+  offsetFromCenter:
+  - 52
+  - 40
+  - 45
+  - 49
+  - 57
+  BuildingCollection:
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3528461940644632156, guid: 056362a98ac72ec4f897642e0d6fcb6b,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 3492252758492209099, guid: 7f357c9aa23200a40a6f7c7aa294deb4,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 6126136237404006324, guid: 7b94f80046718e544b62c4385ce4cb2c,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 1744178698335579696, guid: 3464a58523e70c54b867aca92b6130ce,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 5616603958200432176, guid: 66e2710bea40cba4d99cd78c5952c866,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 7788807280544472251, guid: ea8aaa0455be3d246bc31eb465dfe840,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 500015578315623897, guid: 06b1cef13d91a8d4f9723e12c783f5c7,
+      type: 3}
+  - size: {x: 0, y: 0, z: 0}
+    building: {fileID: 5887402528059484707, guid: 14b1abee6d339c247a6190dd509ab523,
+      type: 3}
+  tilesToDestroy: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

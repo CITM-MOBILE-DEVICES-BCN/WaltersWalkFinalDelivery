@@ -36,21 +36,7 @@ namespace WalterWalk
 	        breadcrumbs.Enqueue(new Vector3(point.x + .5f, 0, point.y + .5f));
 
 
-   //         Transform child = sign.transform.Find("GameObject");
-			//// sign offset
 
-
-			//if (Mathf.Abs(lastPoint.x - point.x) > 10)
-			//{
-			//	// left turn
-			//	if (lastPoint.x > point.x)
-			//	{
-			//		if (child != null)
-			//		{
-			//			child.eulerAngles = new Vector3(0, 90, 0);
-			//		}
-			//	}
-			//}
 	
 
         }

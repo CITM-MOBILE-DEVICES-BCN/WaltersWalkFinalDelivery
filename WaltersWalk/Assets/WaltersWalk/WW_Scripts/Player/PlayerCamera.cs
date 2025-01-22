@@ -21,8 +21,7 @@ namespace WalterWalk
             camera = Camera.main;
             ReCalculateRotation();
         }
-
-        private void ReCalculateRotation()
+        public void ReCalculateRotation()
         {
             maxRotation = camera.transform.eulerAngles.y + 60;
             minRotation = camera.transform.eulerAngles.y - 60;

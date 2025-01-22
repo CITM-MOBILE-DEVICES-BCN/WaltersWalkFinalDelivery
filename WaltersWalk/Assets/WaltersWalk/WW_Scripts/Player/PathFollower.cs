@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using DG.Tweening;
 
 namespace WalterWalk
 {
@@ -17,12 +18,17 @@ namespace WalterWalk
 		public float Speed;
     	
 		private PathRetriever path;
+		public PlayerCamera cam;
+
 		public Vector3 currentDestination = Vector3.zero;
 		private Rigidbody rigid;
 		
 		public Orientation orientation = Orientation.Vertical;
 
 		bool stoped = false;
+
+		bool left = false;
+		bool first = true;
 
 		async void Awake()
 		{
@@ -66,11 +72,30 @@ namespace WalterWalk
 					{
 						orientation = Orientation.Horizontal;
 
+						if (currentDestination.x > transform.position.x)
+						{
+							transform.DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z), 0.8f).OnComplete(() => cam.ReCalculateRotation()); ;
+							left = false;
+						}
+						else
+						{
+                            transform.DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y  + 90, transform.eulerAngles.z), 0.8f).OnComplete( () => cam.ReCalculateRotation());
+							left = true;
+
+                        }
+						first = false;
 					}
 					else
 					{
 						orientation = Orientation.Vertical;
-					}
+						if (!first)
+						{
+							float newYaw = transform.eulerAngles.y;
+							if (left) { newYaw -= 90; }
+							else { newYaw += 90; }
+							transform.DORotate(new Vector3(transform.eulerAngles.x, newYaw, transform.eulerAngles.z), 0.8f).OnComplete(() => cam.ReCalculateRotation()); ;
+						}
+                    }
 					PlayerManager.instance.playerOrientation = orientation;
 					
                 }
