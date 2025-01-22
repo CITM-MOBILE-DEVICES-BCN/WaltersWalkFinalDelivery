@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WalterWalk;
 
 namespace PhoneMinigames
 {
@@ -10,7 +11,7 @@ namespace PhoneMinigames
         {
             if (other.CompareTag("Obstacle"))
             {
-                
+                DopamineBar.instance.DopaMineLevelValueModification(-10);
             }
         }
     }
