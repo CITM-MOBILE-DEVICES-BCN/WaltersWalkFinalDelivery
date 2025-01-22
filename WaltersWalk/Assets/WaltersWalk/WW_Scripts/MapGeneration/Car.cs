@@ -23,7 +23,7 @@ namespace WalterWalk
         public float speed = 0f;
         public SoundType claxonType;
 
-        private Collider collider;
+        private BoxCollider collider;
 	    private GameObject carSpawned = null;
 	    public bool goesDown = false;
 
@@ -34,7 +34,7 @@ namespace WalterWalk
 
         private void Awake()
         {
-            collider = GetComponent<Collider>();
+            collider = GetComponent<BoxCollider>();
             audioSource = gameObject.AddComponent<AudioSource>(); 
             audioSource.spatialBlend = 1.0f;
         }
@@ -48,17 +48,18 @@ namespace WalterWalk
             {
                 carSpawned = Instantiate(cars[UnityEngine.Random.Range(0, cars.Length - 1)], this.transform);
                 carSpawned.transform.localPosition = new Vector3(0, -1, 0);
+                collider.size = new Vector3(collider.bounds.size.z, collider.bounds.size.y, collider.bounds.size.x);
             }
 	        if (!goesDown){
 		        if (dir == Direction.LEFT)
 		        {
 			        direction = new Vector3(1, 0, 0);
-			        carSpawned.transform.eulerAngles = new Vector3(0,90,0);
+			        this.transform.eulerAngles = new Vector3(0,90,0);
 		        }
 		        else
 		        {
 			        direction = new Vector3(-1, 0, 0);
-			        carSpawned.transform.eulerAngles = new Vector3(0,-90,0);
+                    this.transform.eulerAngles = new Vector3(0,-90,0);
 		        }
 	        }
 	        else
@@ -66,12 +67,12 @@ namespace WalterWalk
 	        	if (dir == Direction.LEFT)
 		        {
 			        direction = new Vector3(0, 0, -1);
-			        carSpawned.transform.eulerAngles = new Vector3(0, 180,0);
+                    this.transform.eulerAngles = new Vector3(0, 180,0);
 		        }
 		        else
 		        {
 			        direction = new Vector3(0, -0, 1);
-			        carSpawned.transform.eulerAngles = new Vector3(0, 0,0);
+                    this.transform.eulerAngles = new Vector3(0, 0,0);
 		        }
 	        }
 	        
@@ -92,7 +93,8 @@ namespace WalterWalk
                 if (transform.position.x > PlayerManager.instance.player.transform.position.x)
                 {
                     collider.enabled = false;
-                    PlayerManager.instance.warner.RemoveWarning(this.gameObject);
+                    
+                   PlayerManager.instance.warner.RemoveWarning(this.gameObject);
                 }
             }
             else
@@ -100,7 +102,7 @@ namespace WalterWalk
                 if (transform.position.x < PlayerManager.instance.player.transform.position.x)
                 {
                     collider.enabled = false;
-                    PlayerManager.instance.warner.RemoveWarning(this.gameObject);
+                   PlayerManager.instance.warner.RemoveWarning(this.gameObject);
                 }
             }
            // return;

@@ -122,7 +122,9 @@ MonoBehaviour:
   dir: 0
   direction: {x: 0, y: 0, z: 0}
   speed: 0
+  claxonType: 0
   goesDown: 0
+  hasPlayedClaxon: 0
 --- !u!1001 &6596112920636201299
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ namespace WalterWalk
             if (other.tag == "car")
             {
 
-               // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }

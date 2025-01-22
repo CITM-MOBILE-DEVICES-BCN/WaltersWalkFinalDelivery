@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using DG.Tweening;
 using System.Threading.Tasks;
-using DG.Tweening;
+using UnityEngine;
 
 namespace WalterWalk
 {
-	
-	public enum Orientation
+
+    public enum Orientation
 	{
 		Horizontal,
 		Vertical
@@ -22,8 +20,11 @@ namespace WalterWalk
 
 		public Vector3 currentDestination = Vector3.zero;
 		private Rigidbody rigid;
+
+		public Orientation orientation;
 		
-		public Orientation orientation = Orientation.Vertical;
+	
+	
 
 		bool stoped = false;
 
@@ -39,6 +40,8 @@ namespace WalterWalk
             path = GetComponent<PathRetriever>();
             currentDestination = path.PopPoint();
 			currentDestination.y = transform.position.y;
+			orientation = Orientation.Vertical;
+			PlayerManager.instance.playerOrientation = orientation;
 		}
 
         // Update is called once per frame
