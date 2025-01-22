@@ -7,9 +7,12 @@ namespace PhoneMinigames
     public class AcceptPhoneCall : MonoBehaviour
     {
         public GameObject declineButton;
+        public PhoneCallAudio phoneCallAudio;
        
         public void OnAccept()
         {
+            phoneCallAudio.OnAcceptCall();
+
             StartCoroutine(Waiter());
         }
 
