@@ -10,7 +10,7 @@ namespace PhoneMinigames
         GameObject subwaySurferEnvironmentInstance;
         void Start()
         {
-            subwaySurferEnvironmentInstance = Instantiate(subwaySurferEnvironment,new Vector3(0, -48.46f, -1.62f), Quaternion.identity);
+            subwaySurferEnvironmentInstance = Instantiate(subwaySurferEnvironment,new Vector3(0, -148.46f, -1.62f), Quaternion.identity);
         }
 
         private void OnDestroy()

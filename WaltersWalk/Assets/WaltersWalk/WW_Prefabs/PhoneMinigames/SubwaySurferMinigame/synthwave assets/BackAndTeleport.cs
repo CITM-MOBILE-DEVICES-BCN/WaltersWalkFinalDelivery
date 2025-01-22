@@ -28,7 +28,7 @@ public class InfiniteScrollingFloor : MonoBehaviour
         // Initialize the floor with the given number of tiles
         for (int i = 0; i < initialTiles; i++)
         {
-            Vector3 position = transform.position + new Vector3(0, 0, i * tileLength);
+            Vector3 position = transform.position + new Vector3(0, 0, i * tileLength - 65);
             GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity, transform);
             tilesQueue.Enqueue(tile);
         }
