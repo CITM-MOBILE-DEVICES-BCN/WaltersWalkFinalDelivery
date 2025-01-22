@@ -6,7 +6,7 @@ namespace WalterWalk
     public class GameDataManager
     {
         private static string dataPath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
-        private PlayerData playerData;
+        public PlayerData playerData;
 
         public GameDataManager()
         {
@@ -63,7 +63,7 @@ namespace WalterWalk
             playerData = JsonUtility.FromJson<PlayerData>(json);
         }
 
-        private void SavePlayerData()
+        public void SavePlayerData()
         {
             string json = JsonUtility.ToJson(playerData, true);
             File.WriteAllText(dataPath, json);

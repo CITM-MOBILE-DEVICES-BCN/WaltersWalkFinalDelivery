@@ -9,5 +9,6 @@ namespace WalterWalk
         public float panelXOffset = 0.5f;
         public float panelYOffset = 0.5f;
         public float panelZOffset = 0.5f;
+        public Transform referenceChild; // El hijo del GameObject que se usará como referencia
     }
 }

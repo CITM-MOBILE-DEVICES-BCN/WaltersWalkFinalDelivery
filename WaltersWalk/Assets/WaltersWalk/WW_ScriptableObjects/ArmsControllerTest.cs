@@ -29,16 +29,6 @@ public class ArmsControllerTest : MonoBehaviour
         {
             animator.SetTrigger("Scratching");
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            animator.SetTrigger("Pills");
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            animator.SetTrigger("SmokeCig");
-        }
     }
 }
 

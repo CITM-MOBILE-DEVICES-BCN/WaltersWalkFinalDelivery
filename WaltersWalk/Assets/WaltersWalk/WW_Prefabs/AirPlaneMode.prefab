@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1998978239963167867
+--- !u!1 &8685764985114621555
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7466838638514708553}
-  - component: {fileID: 3926093315200234753}
-  - component: {fileID: 350878508105247774}
-  - component: {fileID: 3895127229493927406}
+  - component: {fileID: 8694866834850521960}
+  - component: {fileID: 935654911685167405}
+  - component: {fileID: 8764713788813571327}
+  - component: {fileID: 633345307526588774}
   m_Layer: 0
   m_Name: AirPlaneMode
   m_TagString: Untagged
@@ -19,29 +19,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7466838638514708553
+--- !u!4 &8694866834850521960
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998978239963167867}
+  m_GameObject: {fileID: 8685764985114621555}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.967, y: 1.611, z: -2.86}
-  m_LocalScale: {x: 0.11003583, y: 0.11003583, z: 0.11003583}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.983, y: 1.686, z: -2.872}
+  m_LocalScale: {x: 0.1153966, y: 0.1153966, z: 0.1153966}
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8442500435692633631}
+  - {fileID: 8017233167506796369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3926093315200234753
+--- !u!114 &935654911685167405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685764985114621555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5853850479f9848a418ca71c821bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPanel: {fileID: 0}
+  itemNameText: {fileID: 0}
+  itemPriceText: {fileID: 0}
+  buyButton: {fileID: 0}
+--- !u!114 &8764713788813571327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685764985114621555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52a4ce683d499240b4489da4a75804e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Air Plane Mode
+  price: 75
+  panelXOffset: 0
+  panelYOffset: -0.15
+  panelZOffset: 0
+  referenceChild: {fileID: 8017233167506796369}
+--- !u!65 &633345307526588774
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998978239963167867}
+  m_GameObject: {fileID: 8685764985114621555}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -56,126 +90,92 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &350878508105247774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998978239963167867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5853850479f9848a418ca71c821bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPanel: {fileID: 0}
-  itemNameText: {fileID: 0}
-  itemPriceText: {fileID: 0}
-  buyButton: {fileID: 0}
---- !u!114 &3895127229493927406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998978239963167867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52a4ce683d499240b4489da4a75804e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Air Plane Mode
-  price: 50
-  panelXOffset: -0.01
-  panelYOffset: -0.1
-  panelZOffset: 0.1
---- !u!1001 &8260569385668139508
+--- !u!1001 &3042282532484760651
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7466838638514708553}
+    m_TransformParent: {fileID: 8694866834850521960}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.21041569
+      value: 0.001543178
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.21041569
+      value: 0.001543178
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.21041569
+      value: 0.001543178
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13550727
+      value: 0.0000043334717
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41479975
+      value: 0.12
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.059999578
+      value: -0.07
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710677
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.70710677
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+    - target: {fileID: -927199367670048503, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
         type: 3}
       propertyPath: m_Name
       value: USB Flash Drive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: -8700617353114198275, guid: dff51a0b8c1b3434f85d56d6fa60bea6, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff51a0b8c1b3434f85d56d6fa60bea6, type: 3}
---- !u!4 &8442500435692633631 stripped
+--- !u!4 &8017233167506796369 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: dff51a0b8c1b3434f85d56d6fa60bea6,
     type: 3}
-  m_PrefabInstance: {fileID: 8260569385668139508}
+  m_PrefabInstance: {fileID: 3042282532484760651}
   m_PrefabAsset: {fileID: 0}
