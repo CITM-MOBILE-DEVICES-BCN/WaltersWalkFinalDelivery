@@ -12,6 +12,7 @@ namespace PhoneMinigames
 
         GameObject currentMinigame;
 
+        public GameObject dopamineBar;
         void Start()
         {
             memeWeightCalculator = new WeightedRandomSelector(minigamePrefabs.Length);
@@ -32,10 +33,11 @@ namespace PhoneMinigames
                     Destroy(currentMinigame);
                 }
 
-
                 GetRandomMinigame();
             }
         }
+
+      
 
     }
 }

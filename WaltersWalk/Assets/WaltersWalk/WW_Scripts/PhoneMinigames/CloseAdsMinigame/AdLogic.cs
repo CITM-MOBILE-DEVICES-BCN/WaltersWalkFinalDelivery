@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WalterWalk;
 
 namespace PhoneMinigames
 {
@@ -25,11 +26,13 @@ namespace PhoneMinigames
         public void OnClickX()
         {
             transform.DOScale(new Vector3(0, 0, 0), disappearTime).OnComplete(() => Destroy(gameObject));
+            DopamineBar.instance.DopaMineLevelValueModification(10);
         }
 
         public void OnClickAd()
         {
             Instantiate(warningPopup, transform.position, Quaternion.identity,transform.parent.parent);
+            DopamineBar.instance.DopaMineLevelValueModification(-10);
         }
 
     }
