@@ -8,14 +8,18 @@ namespace WalterWalk
     {
         [SerializeField] Animator playerDeathAnimator;
         [SerializeField] GameObject blackScreen;
+
         public void DeathByCar()
         {
             blackScreen.SetActive(true);
-            //play sound
+
+            AudioManager.PlaySound(SoundType.CARCRASH);
             StartCoroutine(HospitalTransition());
+            
         }  
         public void DeathByDopamine()
         {
+            AudioManager.PlaySound(SoundType.FENTANYLYAPPER);
             StartCoroutine(BlackScreen());
         }
 

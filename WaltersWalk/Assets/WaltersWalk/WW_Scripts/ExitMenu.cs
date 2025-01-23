@@ -17,7 +17,7 @@ namespace WalterWalk
         IEnumerator LoadMenu()
         {
             yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("Loading3");
+            SceneManager.LoadScene("Loading2");
         }
     }
 }

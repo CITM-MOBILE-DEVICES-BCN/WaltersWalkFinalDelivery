@@ -14,7 +14,7 @@ namespace PhoneMinigames
             if (collision.gameObject.CompareTag("Obstacle"))
             {
                 Debug.Log("COllision with objactle");
-                DopamineBar.instance.DopaMineLevelValueModification(-10);
+                DopamineBar.instance.DopaMineLevelValueModification(-30);
             }
         }
     }

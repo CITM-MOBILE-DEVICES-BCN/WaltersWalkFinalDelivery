@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using WalterWalk;
 
 public class ArmsControllerTest : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ArmsControllerTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && PlayerManager.instance.isDoorOpen)
         {
             animator.SetBool("IsPhoneActive", true);
             animator.SetTrigger("PhoneOut");
@@ -24,10 +25,11 @@ public class ArmsControllerTest : MonoBehaviour
             cameraMover.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && PlayerManager.instance.isDoorOpen)
         {
             animator.SetBool("IsPhoneActive", false);
             animator.SetTrigger("StorePhone");
+            gameSelector.ClosePhone();
             cameraMover.SetActive(true);
         }
 

@@ -24,5 +24,6 @@ namespace PhoneMinigames
             declineButton.transform.localScale = new Vector3(0.419999987f, 0.280000001f, 0.699999988f);
          
         }
+
     }
 }

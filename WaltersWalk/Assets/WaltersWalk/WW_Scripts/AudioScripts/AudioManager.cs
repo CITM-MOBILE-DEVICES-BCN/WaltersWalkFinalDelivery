@@ -77,11 +77,6 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            AudioManager.PlaySound(SoundType.CARCRASH);
-        }
-
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleMute();
