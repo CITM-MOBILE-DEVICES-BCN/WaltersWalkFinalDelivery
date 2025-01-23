@@ -27,7 +27,7 @@ namespace PhoneMinigames
             if (Random.value < 0.01f && isPhoneCallActive == false)
             {
                 GameObject phoneCallPrefab = phoneCallPrefabs[phonecallRandomSelector.GetNextWeightedRandom()];
-                GameObject phoneCall = Instantiate(phoneCallPrefab, transform.position, Quaternion.identity,transform);
+                GameObject phoneCall = Instantiate(phoneCallPrefab, transform.position, Quaternion.Euler(0,-180,0),transform);
                 isPhoneCallActive = true;
             }
         }

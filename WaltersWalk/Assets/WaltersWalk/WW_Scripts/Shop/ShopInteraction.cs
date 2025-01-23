@@ -17,6 +17,8 @@ namespace WalterWalk
         private Vector3 originalScale;
         private CanvasManager canvasManager;
 
+        bool isFinished = true;
+
         private void Start()
         {
             gameDataManager = new GameDataManager();
@@ -44,7 +46,7 @@ namespace WalterWalk
             {
                 ItemInfo itemInfo = hit.transform.GetComponent<ItemInfo>();
 
-                if (itemInfo != null)
+                if (itemInfo != null && isFinished )
                 {
                     if (hoveredItem == hit.transform)
                         return;
@@ -93,7 +95,8 @@ namespace WalterWalk
         {
             if (hoveredItem != null)
             {
-                hoveredItem.DOScale(originalScale, 0.2f);
+                isFinished = false;
+                hoveredItem.DOScale(originalScale, 0.2f).OnComplete(() => isFinished = true);
                 hoveredItem = null;
             }
 
