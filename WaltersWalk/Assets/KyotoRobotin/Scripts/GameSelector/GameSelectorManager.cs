@@ -28,10 +28,13 @@ public class GameSelectorManager : MonoBehaviour
         button1.onClick.AddListener(() => AudioManager.instance.PlayTitleMusic());
         button1.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName1));
         button2.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        button2.onClick.AddListener(() => AudioManager.instance.StopMusic());
         button2.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName2));
         button3.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        button3.onClick.AddListener(() => AudioManager.instance.StopMusic());
         button3.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName3));
         button4.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        button4.onClick.AddListener(() => AudioManager.instance.StopMusic());
         button4.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName4));
 
         List<GameObject> gameObjects = new List<GameObject>

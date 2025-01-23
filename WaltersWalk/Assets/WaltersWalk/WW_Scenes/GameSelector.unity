@@ -544,10 +544,10 @@ MonoBehaviour:
   button2: {fileID: 828888742366455948}
   button3: {fileID: 1336363246910067690}
   button4: {fileID: 6452412632688105017}
-  sceneName1: MainMenu_1
+  sceneName1: Gameplay
   sceneName2: RobotinMeta
   sceneName3: 3.Meta
-  sceneName4: 
+  sceneName4: MainMenu_1
 --- !u!4 &1918080465
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +824,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game1
+  m_text: 'WaltersWalk
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
@@ -1093,9 +1095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game3
-
-'
+  m_text: RuinSeeker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game4
+  m_text: KyotoNinja
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game2
+  m_text: Robotin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
