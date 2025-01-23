@@ -43,6 +43,11 @@ namespace WalterWalk
 
         void Update()
         {
+            if (PlayerManager.instance.isDoorOpen == false)
+            {
+                return;
+            }
+
             dopamineValue -= Time.deltaTime * dopamineDecraseRate;
             dopamineSlider.value = dopamineValue;
 

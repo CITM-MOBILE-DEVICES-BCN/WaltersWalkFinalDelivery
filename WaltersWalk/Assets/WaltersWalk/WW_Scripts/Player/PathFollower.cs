@@ -61,19 +61,20 @@ namespace WalterWalk
 			else if (Input.GetKeyDown(KeyCode.Space) == true && stoped)
 			{
 				stoped = false;
-				Debug.Log("stop false");
+				
 			}
 			
 			if (stoped)
 			{
 				rigid.velocity = Vector3.Lerp(rigid.velocity, Vector3.zero, .1f);
-
-				return;
+             
+                return;
 			}
 
 			if (path != null)
 			{
-				if (Vector3.Distance(transform.position , currentDestination) <= 0.1f)
+                Debug.Log("haspath");
+                if (Vector3.Distance(transform.position , currentDestination) <= 0.1f)
 				{
 					currentDestination = path.PopPoint(); /* Get next destination */
 					currentDestination.y = transform.position.y; // Lock y

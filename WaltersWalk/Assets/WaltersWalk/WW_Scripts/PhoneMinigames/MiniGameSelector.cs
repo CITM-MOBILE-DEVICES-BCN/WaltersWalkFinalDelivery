@@ -28,5 +28,13 @@ namespace PhoneMinigames
             int index = memeWeightCalculator.GetNextWeightedRandom();
             currentMinigame = Instantiate(minigamePrefabs[index],gameObject.transform);
         }
+
+        public void ClosePhone()
+        {
+            if (gameObject.transform.childCount > 0 && currentMinigame != null)
+            {
+                Destroy(currentMinigame);
+            }
+        }
     }
 }
