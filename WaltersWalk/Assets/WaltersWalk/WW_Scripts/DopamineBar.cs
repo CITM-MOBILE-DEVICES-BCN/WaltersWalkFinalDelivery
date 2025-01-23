@@ -8,11 +8,13 @@ namespace WalterWalk
     public class DopamineBar : MonoBehaviour
     {
         public float dopamineValue = 100;
-        public float dopamineDecraseRate = 1;
+        public float dopamineDecraseRate = 7;
         public Slider dopamineSlider;
         public PlayerDeath playerDeath;
-        private Animator animator;
+        public Animator animator;
         private bool hasScratched = false;
+        private bool isLowDopamineSoundPlaying = false;
+
 
 
         //create a singleton
@@ -31,6 +33,10 @@ namespace WalterWalk
         public void DopaMineLevelValueModification(float value)
         {
             dopamineValue += value;
+            if (dopamineValue > 30)
+            {
+                hasScratched = false; // Reset the flag when dopamine is above 30
+            }
         }
 
         void Update()
@@ -49,6 +55,7 @@ namespace WalterWalk
                 {
                     dopamineValue = 100;
                     PlayerPowerUps.instance.SetPowerUpState("LSD", false);
+                    PlayerPowerUps.instance.UseLSD();
 
                 }
                 else
@@ -63,6 +70,16 @@ namespace WalterWalk
                 animator.SetTrigger("Scratching");
                 hasScratched = true;
 
+            }
+            if (dopamineValue < 15 && !isLowDopamineSoundPlaying)
+            {
+                AudioManager.instance.ToggleMute();
+                isLowDopamineSoundPlaying = true;
+            }
+            else if (dopamineValue >= 15 && isLowDopamineSoundPlaying)
+            {
+                AudioManager.instance.ToggleMute();
+                isLowDopamineSoundPlaying = false;
             }
         }
     }

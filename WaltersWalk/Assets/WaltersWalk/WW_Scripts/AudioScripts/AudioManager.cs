@@ -145,7 +145,7 @@ public class AudioManager : MonoBehaviour
         envAudioSource2.volume = volume;
     }
 
-    private void ToggleMute()
+    public void ToggleMute()
     {
         if (envAudioSource1 != null && envAudioSource2 != null)
         {   
