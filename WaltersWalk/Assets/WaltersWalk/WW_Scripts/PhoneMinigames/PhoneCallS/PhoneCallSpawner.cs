@@ -11,7 +11,6 @@ namespace PhoneMinigames
         public GameObject[] phoneCallPrefabs;
         WeightedRandomSelector phonecallRandomSelector;
         bool isPhoneCallActive = false;
-        public bool isAirPlaneModeActive = false;
 
         private void Start()
         {
@@ -20,7 +19,7 @@ namespace PhoneMinigames
 
         void Update()
         {
-            if (isAirPlaneModeActive)
+            if (GlobalVariables.isAirPlaneModeActive)
             {
                 return;
             }

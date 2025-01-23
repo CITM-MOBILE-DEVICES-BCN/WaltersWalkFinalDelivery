@@ -11,6 +11,9 @@ namespace WalterWalk
         public float dopamineDecraseRate = 1;
         public Slider dopamineSlider;
         public PlayerDeath playerDeath;
+        private Animator animator;
+        private bool hasScratched = false;
+
 
         //create a singleton
         public static DopamineBar instance;
@@ -53,6 +56,13 @@ namespace WalterWalk
                     playerDeath.DeathByDopamine();
 
                 }
+            }
+            if (dopamineValue <= 30 && !animator.GetBool("IsPhoneActive") && !hasScratched)
+            {
+                AudioManager.PlaySound(SoundType.SCRATCHING);
+                animator.SetTrigger("Scratching");
+                hasScratched = true;
+
             }
         }
     }

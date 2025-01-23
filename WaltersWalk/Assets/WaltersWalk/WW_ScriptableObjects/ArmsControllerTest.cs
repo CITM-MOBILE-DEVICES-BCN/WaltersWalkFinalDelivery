@@ -5,9 +5,7 @@ using UnityEngine;
 public class ArmsControllerTest : MonoBehaviour
 {
     private Animator animator;
-    public bool isPhoneOut = false;
 
-    [SerializeField] GameObject moveCameraTracker;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,26 +13,18 @@ public class ArmsControllerTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isPhoneOut == false)
+        if (Input.GetKeyDown(KeyCode.S))
         {
             animator.SetBool("IsPhoneActive", true);
             animator.SetTrigger("PhoneOut");
-            isPhoneOut = true;
-            moveCameraTracker.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && isPhoneOut ==  true)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             animator.SetBool("IsPhoneActive", false);
             animator.SetTrigger("StorePhone");
-            isPhoneOut = false;
-            moveCameraTracker.SetActive(true);
         }
 
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    animator.SetTrigger("Scratching");
-        //}
     }
 }
 

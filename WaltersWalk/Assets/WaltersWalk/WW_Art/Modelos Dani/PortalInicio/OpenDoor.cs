@@ -11,8 +11,15 @@ namespace WalterWalk
 		public void StartGame()
 		{
 			Puerta.SetBool("NewGame", true);
-			if (PlayerManager.instance != null) { PlayerManager.instance.isDoorOpen = true; }
-		}
+			if (PlayerManager.instance != null)
+			{
+				PlayerManager.instance.isDoorOpen = true;
+			}
+            if (PlayerPowerUps.instance != null)
+            {
+                PlayerPowerUps.instance.StartCoroutine(PlayerPowerUps.instance.UsePowerUpsInOrder());
+            }
+        }
 	}
 
 }
