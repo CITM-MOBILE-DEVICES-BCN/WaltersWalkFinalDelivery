@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/WaltersWalk/WW_Scenes/Loading.unity
+    path: Assets/KyotoRobotin/Loading.unity
     guid: 97335266be5e3044483676474a4f0791
   - enabled: 1
     path: Assets/KyotoRobotin/ROBOTIN/Scenes/SplashScreen.unity
