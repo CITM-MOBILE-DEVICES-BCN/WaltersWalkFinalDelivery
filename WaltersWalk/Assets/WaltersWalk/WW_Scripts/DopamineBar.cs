@@ -42,8 +42,17 @@ namespace WalterWalk
 
             if (dopamineValue <= 0) 
             {
-                // stop player
-                playerDeath.DeathByDopamine();
+                if (PlayerPowerUps.instance.IsPowerUpAvailable("LSD"))
+                {
+                    dopamineValue = 100;
+                    PlayerPowerUps.instance.SetPowerUpState("LSD", false);
+
+                }
+                else
+                {
+                    playerDeath.DeathByDopamine();
+
+                }
             }
         }
     }
