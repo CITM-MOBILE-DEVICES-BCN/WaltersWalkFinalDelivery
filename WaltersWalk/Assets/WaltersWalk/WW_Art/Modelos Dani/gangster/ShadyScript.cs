@@ -11,7 +11,6 @@ public class ShadyScript : MonoBehaviour
 	public void OpenShop()
 	{
 		Shady.SetBool("OpenShop", true);
-		Shady.SetBool("CloseShop", false);
 		
 		Camera.SetBool("ShadySHop",true);
 	}
@@ -19,7 +18,7 @@ public class ShadyScript : MonoBehaviour
 	public void CloseShop()
 	{
 		Shady.SetBool("OpenShop", false);
-		Shady.SetBool("CloseShop", true);
+		
 		Camera.SetBool("ShadySHop",false);
 		
 	}
