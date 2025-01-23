@@ -25,6 +25,8 @@ public class GameSelectorManager : MonoBehaviour
     private void Start()
     {
         button1.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        button1.onClick.AddListener(() => AudioManager.instance.StopMusic());
+        button1.onClick.AddListener(() => RemoveAudioManager());
         button1.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName1));
         button2.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button2.onClick.AddListener(() => AudioManager.instance.StopMusic());
@@ -46,4 +48,10 @@ public class GameSelectorManager : MonoBehaviour
 
         NavigationManager.Instance.StartAnim(gameObjects, 1);
     }
+
+    public void RemoveAudioManager()
+    {
+        Destroy(AudioManager.instance.gameObject);
+    }
+
 }
