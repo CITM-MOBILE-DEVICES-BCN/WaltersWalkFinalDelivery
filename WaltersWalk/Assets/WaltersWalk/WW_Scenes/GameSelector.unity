@@ -540,10 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb93a057c4d2264a9a2a84524fc61ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 4754187432619402303}
+  button1: {fileID: 6452412632688105017}
   button2: {fileID: 828888742366455948}
   button3: {fileID: 1336363246910067690}
-  button4: {fileID: 6452412632688105017}
+  button4: {fileID: 4754187432619402303}
   sceneName1: Gameplay
   sceneName2: RobotinMeta
   sceneName3: 3.Meta
@@ -824,9 +824,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WaltersWalk
-
-'
+  m_text: KyotoNinja
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
@@ -954,10 +952,10 @@ RectTransform:
   m_Children:
   - {fileID: 2132780382}
   - {fileID: 51674687071464942}
-  - {fileID: 4630968514839477377}
+  - {fileID: 6550786529683861032}
   - {fileID: 4765468672881591672}
   - {fileID: 4741773568943019690}
-  - {fileID: 6550786529683861032}
+  - {fileID: 4630968514839477377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1235,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KyotoNinja
+  m_text: WaltersWalk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
@@ -1435,7 +1433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29444444, y: 0.6005603}
   m_AnchorMax: {x: 0.29444444, y: 0.6005603}
-  m_AnchoredPosition: {x: 2, y: -92}
+  m_AnchoredPosition: {x: 188, y: -276}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4741773568943019690
@@ -1599,9 +1597,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lobby
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
-  m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1773,7 +1770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7194445, y: 0.41700003}
   m_AnchorMax: {x: 0.7194445, y: 0.41700003}
-  m_AnchoredPosition: {x: -2.6065674, y: -124.87573}
+  m_AnchoredPosition: {x: -194.6, y: 55}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6614373262658040928

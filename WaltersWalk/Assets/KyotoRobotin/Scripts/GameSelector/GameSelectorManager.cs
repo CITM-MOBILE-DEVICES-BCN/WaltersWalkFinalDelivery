@@ -25,7 +25,6 @@ public class GameSelectorManager : MonoBehaviour
     private void Start()
     {
         button1.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
-        button1.onClick.AddListener(() => AudioManager.instance.PlayTitleMusic());
         button1.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName1));
         button2.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button2.onClick.AddListener(() => AudioManager.instance.StopMusic());
