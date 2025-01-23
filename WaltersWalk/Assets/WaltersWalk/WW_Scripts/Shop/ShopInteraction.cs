@@ -15,13 +15,13 @@ namespace WalterWalk
         private GameDataManager gameDataManager;
         private Transform hoveredItem;
         private Vector3 originalScale;
-        private CanvasManager canvasManager; 
+        private CanvasManager canvasManager;
 
         private void Start()
         {
             gameDataManager = new GameDataManager();
             itemPanel.SetActive(false);
-            canvasManager = FindObjectOfType<CanvasManager>(); 
+            canvasManager = FindObjectOfType<CanvasManager>();
         }
 
         private void Update()
@@ -31,7 +31,7 @@ namespace WalterWalk
 
         private void HandleItemHover()
         {
-            if (canvasManager != null && canvasManager.IsCanvasActive("SettingsCanvas")) 
+            if (canvasManager != null && canvasManager.IsCanvasActive("SettingsCanvas"))
             {
                 ResetHoveredItem();
                 return;
@@ -54,7 +54,7 @@ namespace WalterWalk
                     originalScale = hoveredItem.localScale;
 
                     hoveredItem.DOScale(originalScale * 1.2f, 0.2f);
-                    ShowItemPanel(itemInfo, hit.transform.position);
+                    ShowItemPanel(itemInfo);
                 }
                 else
                 {
@@ -67,13 +67,22 @@ namespace WalterWalk
             }
         }
 
-        private void ShowItemPanel(ItemInfo itemInfo, Vector3 itemPosition)
+        private void ShowItemPanel(ItemInfo itemInfo)
         {
             itemPanel.SetActive(true);
             itemNameText.text = $"x1 {itemInfo.itemName}";
             itemPriceText.text = $"${itemInfo.price}";
 
-            Vector3 panelPosition = itemPosition;
+            Vector3 panelPosition;
+            if (itemInfo.referenceChild != null)
+            {
+                panelPosition = itemInfo.referenceChild.position;
+            }
+            else
+            {
+                panelPosition = itemInfo.transform.position;
+            }
+
             panelPosition.x += itemInfo.panelXOffset;
             panelPosition.y += itemInfo.panelYOffset;
             panelPosition.z += itemInfo.panelZOffset;
@@ -99,7 +108,7 @@ namespace WalterWalk
                 if (itemInfo != null)
                 {
                     string result = gameDataManager.TryBuyItem(itemInfo.itemName, itemInfo.price);
-                    Debug.Log(result);
+                    UnityEngine.Debug.Log(result);
                 }
             }
         }

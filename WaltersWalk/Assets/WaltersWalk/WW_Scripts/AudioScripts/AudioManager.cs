@@ -81,15 +81,6 @@ public class AudioManager : MonoBehaviour
             AudioManager.PlaySound(SoundType.SCRATCHING);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            AudioManager.PlaySound(SoundType.PILLS);
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AudioManager.PlaySound(SoundType.SMOKING);
-        }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
