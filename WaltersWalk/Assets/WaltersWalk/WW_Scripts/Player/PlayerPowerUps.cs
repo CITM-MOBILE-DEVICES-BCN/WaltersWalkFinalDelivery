@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-using PhoneMinigames;
+//using PhoneMinigames;
 
 namespace WalterWalk
 {
@@ -14,7 +14,7 @@ namespace WalterWalk
         private DopamineBar dopamineBar;
 
         public static PlayerPowerUps instance;
-		public PhoneMinigames phoneCallSpawner;
+		//public PhoneMinigames phoneCallSpawner;
 
         // Start is called before the first frame update
         void Start()
@@ -106,7 +106,7 @@ namespace WalterWalk
         {
             if (IsPowerUpAvailable("Air Plane Mode"))
             {
-                phoneCallSpawner.isAirPlaneModeActive = true;  
+                //phoneCallSpawner.isAirPlaneModeActive = true;  
                 SetPowerUpState("Air Plane Mode", false);
                 UnityEngine.Debug.Log("AirPlaneMode used");
             }
