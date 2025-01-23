@@ -13,7 +13,7 @@ public class ArmsControllerTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             animator.SetBool("IsPhoneActive", true);
             animator.SetTrigger("PhoneOut");
@@ -25,10 +25,6 @@ public class ArmsControllerTest : MonoBehaviour
             animator.SetTrigger("StorePhone");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            animator.SetTrigger("Scratching");
-        }
     }
 }
 

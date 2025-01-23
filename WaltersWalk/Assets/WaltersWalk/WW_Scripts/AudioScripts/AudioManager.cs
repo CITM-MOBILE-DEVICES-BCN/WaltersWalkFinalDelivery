@@ -76,11 +76,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AudioManager.PlaySound(SoundType.SCRATCHING);
-        }
-
 
         if (Input.GetKeyDown(KeyCode.O))
         {

@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-//using PhoneMinigames;
 
 namespace WalterWalk
 {
     public class PlayerPowerUps : MonoBehaviour
-	{
-		
+    {
         private Animator animator;
         private GameDataManager gameDataManager;
         private DopamineBar dopamineBar;
 
         public static PlayerPowerUps instance;
-		//public PhoneMinigames phoneCallSpawner;
 
         // Start is called before the first frame update
         void Start()
@@ -33,15 +30,11 @@ namespace WalterWalk
             dopamineBar = DopamineBar.instance;
 
             StartCoroutine(UsePowerUpsInOrder());
-
-
         }
 
         // Update is called once per frame
         void Update()
         {
-
-
         }
 
         public void UseCigarette()
@@ -53,7 +46,6 @@ namespace WalterWalk
                 dopamineBar.dopamineDecraseRate = 0.75f;
                 SetPowerUpState("Cigarette", false);
                 UnityEngine.Debug.Log("Cigarette used");
-
             }
             else
             {
@@ -94,7 +86,6 @@ namespace WalterWalk
             {
                 SetPowerUpState("Sport Shoes", false);
                 UnityEngine.Debug.Log("SportShoes used");
-
             }
             else
             {
@@ -106,7 +97,7 @@ namespace WalterWalk
         {
             if (IsPowerUpAvailable("Air Plane Mode"))
             {
-                //phoneCallSpawner.isAirPlaneModeActive = true;  
+                GlobalVariables.isAirPlaneModeActive = true;
                 SetPowerUpState("Air Plane Mode", false);
                 UnityEngine.Debug.Log("AirPlaneMode used");
             }
@@ -131,7 +122,8 @@ namespace WalterWalk
                 gameDataManager.SavePlayerData();
             }
         }
-        private IEnumerator UsePowerUpsInOrder()
+
+        public IEnumerator UsePowerUpsInOrder()
         {
             UseSportShoes();
             UseAirPlaneMode();
