@@ -2379,6 +2379,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 131.797
       objectReference: {fileID: 0}
+    - target: {fileID: 2018470061512717823, guid: 686b41c8978f35a439fa29ad884ae733,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1881403574}
+    - target: {fileID: 2018470061512717823, guid: 686b41c8978f35a439fa29ad884ae733,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 2608255536622739885, guid: 686b41c8978f35a439fa29ad884ae733,
         type: 3}
       propertyPath: m_RenderMode
