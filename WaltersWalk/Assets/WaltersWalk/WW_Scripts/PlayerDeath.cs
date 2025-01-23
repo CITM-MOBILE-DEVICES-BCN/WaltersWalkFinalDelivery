@@ -16,8 +16,6 @@ namespace WalterWalk
         }  
         public void DeathByDopamine()
         {
-            //stop player
-            playerDeathAnimator.SetBool("Death", true);
             StartCoroutine(BlackScreen());
         }
 

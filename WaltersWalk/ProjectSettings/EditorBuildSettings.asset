@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WaltersWalk/WW_Scenes/Gameplay.unity
     guid: d9c4cf39939d0ce4abd01c4da3467cb0
+  - enabled: 1
+    path: Assets/WaltersWalk/WW_Scenes/Loading3.unity
+    guid: fbd3589b328396641aa662a571fc0ab8
   m_configObjects: {}
