@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using WalterWalk;
 
 namespace PhoneMinigames
 {
@@ -10,8 +11,13 @@ namespace PhoneMinigames
         public float speed = 10;
         void Start()
         {
-            transform.DOMoveZ(-10, speed).SetEase(Ease.Linear).OnComplete(() => Destroy(gameObject));
+            transform.DOMoveZ(-10, speed).SetEase(Ease.Linear).OnComplete(() => IsDestroy());
         }
-
+        private void IsDestroy()
+        {
+            DopamineBar.instance.DopaMineLevelValueModification(5);
+            Debug.Log("point");
+            Destroy(gameObject);
+        }
     }
 }

@@ -23,9 +23,6 @@ namespace WalterWalk
 
 		public Orientation orientation;
 		
-	
-	
-
 		bool stoped = false;
 
 		bool left = false;
@@ -50,6 +47,7 @@ namespace WalterWalk
 
 	        if (PlayerManager.instance.isDoorOpen){
 		        Movement();
+			
 	        }
         }
         
@@ -63,6 +61,7 @@ namespace WalterWalk
 			else if (Input.GetKeyDown(KeyCode.Space) == true && stoped)
 			{
 				stoped = false;
+				Debug.Log("stop false");
 			}
 			
 			if (stoped)

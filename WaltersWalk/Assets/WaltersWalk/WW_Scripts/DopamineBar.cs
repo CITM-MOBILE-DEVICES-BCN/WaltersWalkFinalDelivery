@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,7 @@ namespace WalterWalk
         public void DopaMineLevelValueModification(float value)
         {
             dopamineValue += value;
+            ScoreMoneyManager.instance.AddPoints((int)value);
         }
 
         void Update()
@@ -41,6 +43,7 @@ namespace WalterWalk
             if (dopamineValue >= 100)
             {
                 dopamineValue = 100;
+                ScoreMoneyManager.instance.AddMoney(1);
             }
 
             if (dopamineValue <= 0) 

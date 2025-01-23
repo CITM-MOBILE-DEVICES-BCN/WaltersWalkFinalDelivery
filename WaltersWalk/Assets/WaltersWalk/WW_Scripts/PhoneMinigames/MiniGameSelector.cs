@@ -20,24 +20,13 @@ namespace PhoneMinigames
 
         public void GetRandomMinigame()
         {
+            if (gameObject.transform.childCount > 0 && currentMinigame != null)
+            {
+                Destroy(currentMinigame);
+            }
+
             int index = memeWeightCalculator.GetNextWeightedRandom();
             currentMinigame = Instantiate(minigamePrefabs[index],gameObject.transform);
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (gameObject.transform.childCount > 0)
-                {
-                    Destroy(currentMinigame);
-                }
-
-                GetRandomMinigame();
-            }
-        }
-
-      
-
     }
 }
