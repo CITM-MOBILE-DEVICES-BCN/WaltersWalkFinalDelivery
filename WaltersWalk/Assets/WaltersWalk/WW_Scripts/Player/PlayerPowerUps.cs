@@ -10,6 +10,7 @@ namespace WalterWalk
         private Animator animator;
         private GameDataManager gameDataManager;
         private DopamineBar dopamineBar;
+        private bool initialLSDUsed = false;
 
         public static PlayerPowerUps instance;
 
@@ -128,10 +129,22 @@ namespace WalterWalk
             UseSportShoes();
             UseAirPlaneMode();
             UseBubbleGum();
-            yield return new WaitForSeconds(3);
-            UseCigarette();
-            yield return new WaitForSeconds(3);
-            UseLSD();
+            if (IsPowerUpAvailable("Cigarette"))
+            {
+                yield return new WaitForSeconds(5);
+                UseCigarette();
+            }
+            if (IsPowerUpAvailable("LSD"))
+            {
+                yield return new WaitForSeconds(5);
+                UseLSD();
+                initialLSDUsed = true;
+            }
+        }
+
+        public bool HasInitialLSDUsed()
+        {
+            return initialLSDUsed;
         }
     }
 }
